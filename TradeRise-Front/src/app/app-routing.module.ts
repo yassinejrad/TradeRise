@@ -18,11 +18,11 @@ const routes: Routes = [
   {
     path: '',
     component: BaseComponent,
-
+    canActivate: [AuthGuard],data:{roles:['User']},
     children: [
 
       {
-        path: 'dashboard', component:UserDashboardComponent,canActivate: [AuthGuard],data:{roles:['User']}
+        path: 'dashboard', component:UserDashboardComponent
       },
       {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['User']}
@@ -34,10 +34,10 @@ const routes: Routes = [
   {
     path: 'Admin',
     component: AdminBaseComponent,
-
+    canActivate: [AuthGuard],data:{roles:['Admin']},
     children: [
       {
-        path: 'Dashboard', component:AdminDashboardComponent ,canActivate: [AuthGuard],data:{roles:['Admin']}
+        path: 'Dashboard', component:AdminDashboardComponent ,
       },
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
