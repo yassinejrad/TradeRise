@@ -13,6 +13,7 @@ import {AdminBaseComponent} from "./views/AdminLayout/admin-base/admin-base.comp
 import {ProfileComponent} from "./views/pages/general/profile/profile.component";
 import {UserComponent} from "./views/pages/user/user.component";
 import {RoleComponent} from "./views/pages/role/role.component";
+import {ConsultantBaseComponent} from "./views/ConsultantLayout/consultant-base/consultant-base.component";
 
 
 const routes: Routes = [
@@ -28,6 +29,22 @@ const routes: Routes = [
       },
       {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['User']}
+      },
+      //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
+      //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }
+    ]
+  },
+  {
+    path: 'Consultant',
+    component: ConsultantBaseComponent,
+    canActivate: [AuthGuard],data:{roles:['Consultant']},
+    children: [
+
+      {
+        path: 'Dashboard', component:ConsultantDashboardComponent
+      },
+      {
+        path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['Consultant']}
       },
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
       //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }

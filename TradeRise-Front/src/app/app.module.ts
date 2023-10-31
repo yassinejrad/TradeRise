@@ -24,6 +24,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {FeatherIconModule} from "./core/feather-icon/feather-icon.module";
 import {FormsModule} from "@angular/forms";
 import { RoleComponent } from './views/pages/role/role.component';
+import {ConsultantLayoutModule} from "./views/ConsultantLayout/ConsultantLayout.module";
+
 
 
 
@@ -36,6 +38,7 @@ import { RoleComponent } from './views/pages/role/role.component';
     ForbiddenComponent,
     UserComponent,
     RoleComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { RoleComponent } from './views/pages/role/role.component';
     BrowserAnimationsModule,
     LayoutModule,
     AdminLayoutModule,
+    ConsultantLayoutModule,
     HttpClientModule,
     RouterModule,
     NgbDropdownModule,

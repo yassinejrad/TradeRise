@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
         console.log('bonjour : ' + role)
         if (role === 'Admin') {
           this.router.navigate(['/Admin/Dashboard']);
-        } else {
+        }else if (role === 'Consultant') {
+          this.router.navigate(['/Consultant/Dashboard']);
+        }
+        else {
           this.router.navigate(['/dashboard']);
         }
       },
