@@ -39,7 +39,9 @@ export class UsersService {
       headers: this.requestHeader,
     });
   }
-
+  getAllUsers() {
+    return this.httpclient.get(this.PATH_OF_API+`/getAllUsers`)
+  }
 
   public forUser() {
     return this.httpclient.get(this.PATH_OF_API + '/forUser', {
@@ -55,22 +57,21 @@ export class UsersService {
   }
 
 
-  // @ts-ignore
-  public roleMatch(allowedRoles:  any[]): boolean {
-    let isMatch = false;
+  public roleMatch(allowedRoles: Array<string>): boolean {
     const userRoles: any = this.userAuthService.getRoles();
 
     if (userRoles != null && userRoles) {
       for (let i = 0; i < userRoles.length; i++) {
         for (let j = 0; j < allowedRoles.length; j++) {
           if (userRoles[i].roleName === allowedRoles[j]) {
-            isMatch = true;
-            return isMatch;
-          } else {
-            return isMatch;
+            return true; // If a match is found, return true immediately
           }
         }
       }
     }
+
+    return false; // If no match is found, return false at the end
   }
+
+
 }

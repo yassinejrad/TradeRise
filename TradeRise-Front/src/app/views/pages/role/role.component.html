@@ -1,0 +1,76 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">Role</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Role table</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Compte</h6>
+        <form class="forms-sample" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Role Name :</label>
+            <input class="form-control mb-4 mb-md-0" ngModel name="roleName" id="roleName"  placeholder="Role Name"  />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Role Description :</label>
+            <input class="form-control"   ngModel name="roleDescription" id="roleDescription" placeholder="Role Description" />
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0 ">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Role Table</h6>
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Description</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let item of roleList | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                let i = index">
+              <td>{{i + (page-1) * tableSize + 1}}  </td>
+              <td>{{item.roleName}}</td>
+              <td>{{item.roleDescription}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="d-flex justify-content-center">
+            <pagination-controls class="pagination"
+                                 previousLabel="Prev"
+                                 nextLabel="Next"
+                                 (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+</div>
+

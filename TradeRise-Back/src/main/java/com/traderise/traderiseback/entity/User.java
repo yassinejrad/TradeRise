@@ -2,6 +2,8 @@ package com.traderise.traderiseback.entity;
 
 import javax.persistence.*;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.*;
 
 @Entity
@@ -10,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class User {
 
     @Id
@@ -17,6 +20,10 @@ public class User {
     private String userFirstName;
     private String userLastName;
     private String userPassword;
+    private String name;
+    private String type;
+    @Column(name = "imagedata",length = 1000)
+    private byte[] image;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
@@ -27,6 +34,8 @@ public class User {
             }
     )
     private Set<Role> role;
+
+
 
     public String getUserName() {
         return userName;

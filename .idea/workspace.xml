@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="055e1a09-6e8f-4759-ae5f-a142dee3641c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/Repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/entity/ImageUploadResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/util/ImageUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/java/com/traderise/traderiseback/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/_auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/_auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/pages/dashboard/AdminDashboard/admin-dashboard/admin-dashboard.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/pages/dashboard/AdminDashboard/admin-dashboard/admin-dashboard.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/pages/dashboard/AdminDashboard/admin-dashboard/admin-dashboard.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/pages/dashboard/AdminDashboard/admin-dashboard/admin-dashboard.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/services/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-nav-bar/admin-nav-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-nav-bar/admin-nav-bar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-side-bar/AdminMenu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-side-bar/AdminMenu.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-side-bar/admin-side-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/AdminLayout/admin-side-bar/admin-side-bar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/layout/sidebar/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/layout/sidebar/menu.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/layout/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/layout/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/auth/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/general/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/general/profile/profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/general/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/app/views/pages/general/profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeRise-Front/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TradeRise-Front/src/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2XWP4vKDNvPSFKhRlaxkK26yyQH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "UserProfile",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="055e1a09-6e8f-4759-ae5f-a142dee3641c" name="Changes" comment="" />
+      <created>1698741678319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698741678319</updated>
+      <workItem from="1698741681013" duration="13000" />
+    </task>
+    <servers />
+  </component>
+</project>

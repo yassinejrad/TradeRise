@@ -3,9 +3,12 @@ package com.traderise.traderiseback.controller;
 import com.traderise.traderiseback.entity.Role;
 import com.traderise.traderiseback.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RoleController {
@@ -17,4 +20,8 @@ public class RoleController {
     public Role createNewRole(@RequestBody Role role) {
         return roleService.createNewRole(role);
     }
+    @GetMapping({"/getAllRoles"})
+    public List<Role> getAllRoles(){
+        return roleService.getAllRoles();
+    };
 }

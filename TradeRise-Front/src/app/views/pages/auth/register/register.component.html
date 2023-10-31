@@ -3,13 +3,16 @@
     <div class="card">
       <div class="row">
         <div class="col-md-4 pe-md-0">
-          <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url(https://via.placeholder.com/219x452)' }">
+          <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url(assets/images/background.webp)' }">
 
           </div>
         </div>
         <div class="col-md-8 ps-md-0">
           <div class="auth-form-wrapper px-4 py-5">
-            <a routerLink="." class="nobleui-logo d-block mb-2">Noble<span>UI</span></a>
+            <a routerLink="/" class="sidebar-brand nobleui-logo">
+              <img src="assets/images/Logo.png" alt="logo">
+            </a>
+            <br><br>
             <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
             <form class="forms-sample" #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
               <div class="mb-3">

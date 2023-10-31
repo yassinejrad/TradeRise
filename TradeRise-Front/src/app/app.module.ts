@@ -18,6 +18,13 @@ import {RouterModule} from "@angular/router";
 import {AuthInterceptor} from "./_auth/auth.interceptor";
 import {UsersService} from "./services/users.service";
 import { ForbiddenComponent } from './views/pages/forbidden/forbidden.component';
+import { UserComponent } from './views/pages/user/user.component';
+import {NgbDropdownModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgxPaginationModule} from "ngx-pagination";
+import {FeatherIconModule} from "./core/feather-icon/feather-icon.module";
+import {FormsModule} from "@angular/forms";
+import { RoleComponent } from './views/pages/role/role.component';
+
 
 
 
@@ -27,7 +34,8 @@ import { ForbiddenComponent } from './views/pages/forbidden/forbidden.component'
     AppComponent,
     ErrorPageComponent,
     ForbiddenComponent,
-
+    UserComponent,
+    RoleComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,12 @@ import { ForbiddenComponent } from './views/pages/forbidden/forbidden.component'
     LayoutModule,
     AdminLayoutModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgbDropdownModule,
+    NgbPaginationModule,
+    NgxPaginationModule,
+    FeatherIconModule,
+    FormsModule
   ],
   providers: [
     AuthGuard,

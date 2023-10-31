@@ -20,13 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onLoggedin(e: Event) {
-    e.preventDefault();
-    localStorage.setItem('isLoggedin', 'true');
-    if (localStorage.getItem('isLoggedin')) {
-      this.router.navigate([this.returnUrl]);
-    }
-  }
+
   login(loginForm : NgForm) {
     this.userService.login(loginForm).subscribe(
       (response: any) => {
@@ -35,6 +29,7 @@ export class LoginComponent implements OnInit {
         console.log(response);
 
         const role = response.user.role[0].roleName;
+        console.log('bonjour : ' + role)
         if (role === 'Admin') {
           this.router.navigate(['/Admin/Dashboard']);
         } else {
