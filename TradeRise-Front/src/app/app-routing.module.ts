@@ -11,6 +11,9 @@ import {
 import {ForbiddenComponent} from "./views/pages/forbidden/forbidden.component";
 import {AdminBaseComponent} from "./views/AdminLayout/admin-base/admin-base.component";
 import {ProfileComponent} from "./views/pages/general/profile/profile.component";
+import {UserComponent} from "./views/pages/user/user.component";
+import {RoleComponent} from "./views/pages/role/role.component";
+import {ConsultantBaseComponent} from "./views/ConsultantLayout/consultant-base/consultant-base.component";
 
 
 const routes: Routes = [
@@ -27,8 +30,24 @@ const routes: Routes = [
       {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['User']}
       },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
+      //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
+      //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }
+    ]
+  },
+  {
+    path: 'Consultant',
+    component: ConsultantBaseComponent,
+    canActivate: [AuthGuard],data:{roles:['Consultant']},
+    children: [
+
+      {
+        path: 'Dashboard', component:ConsultantDashboardComponent
+      },
+      {
+        path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['Consultant']}
+      },
+      //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
+      //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }
     ]
   },
   {
@@ -37,11 +56,20 @@ const routes: Routes = [
     canActivate: [AuthGuard],data:{roles:['Admin']},
     children: [
       {
-        path: 'Dashboard', component:AdminDashboardComponent ,
+        path: 'Dashboard', component:AdminDashboardComponent,
+      },
+      {
+        path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['Admin']}
+      },
+      {
+        path: 'Users', component:UserComponent,canActivate: [AuthGuard],data:{roles:['Admin']}
+      },
+      {
+        path: 'Roles', component:RoleComponent,canActivate: [AuthGuard],data:{roles:['Admin']}
       },
 
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'Dashboard', redirectTo: 'dashboard', pathMatch: 'full' }
+      //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      //{ path: 'Dashboard', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
   {
