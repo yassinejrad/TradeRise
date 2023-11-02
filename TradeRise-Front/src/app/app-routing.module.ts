@@ -14,6 +14,7 @@ import {ProfileComponent} from "./views/pages/general/profile/profile.component"
 import {UserComponent} from "./views/pages/user/user.component";
 import {RoleComponent} from "./views/pages/role/role.component";
 import {ConsultantBaseComponent} from "./views/ConsultantLayout/consultant-base/consultant-base.component";
+import {RiskManagementComponent} from "./views/pages/risk-management/risk-management.component";
 
 
 const routes: Routes = [
@@ -29,6 +30,9 @@ const routes: Routes = [
       },
       {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['User']}
+      },
+      {
+        path: 'riskManagement', component:RiskManagementComponent,canActivate: [AuthGuard],data:{roles:['User']}
       },
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
       //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }

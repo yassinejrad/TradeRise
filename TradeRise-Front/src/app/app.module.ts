@@ -25,10 +25,8 @@ import {FeatherIconModule} from "./core/feather-icon/feather-icon.module";
 import {FormsModule} from "@angular/forms";
 import { RoleComponent } from './views/pages/role/role.component';
 import {ConsultantLayoutModule} from "./views/ConsultantLayout/ConsultantLayout.module";
-
-
-
-
+import { RiskManagementComponent } from './views/pages/risk-management/risk-management.component';
+import {NgChartsModule} from "ng2-charts";
 
 
 @NgModule({
@@ -38,23 +36,25 @@ import {ConsultantLayoutModule} from "./views/ConsultantLayout/ConsultantLayout.
     ForbiddenComponent,
     UserComponent,
     RoleComponent,
+    RiskManagementComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    AdminLayoutModule,
-    ConsultantLayoutModule,
-    HttpClientModule,
-    RouterModule,
-    NgbDropdownModule,
-    NgbPaginationModule,
-    NgxPaginationModule,
-    FeatherIconModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        AdminLayoutModule,
+        ConsultantLayoutModule,
+        HttpClientModule,
+        RouterModule,
+        NgbDropdownModule,
+        NgbPaginationModule,
+        NgxPaginationModule,
+        FeatherIconModule,
+        FormsModule,
+        NgChartsModule
+    ],
   providers: [
     AuthGuard,
     {
