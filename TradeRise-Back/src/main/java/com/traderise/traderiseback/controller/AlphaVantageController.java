@@ -28,4 +28,8 @@ public class AlphaVantageController {
     public List<String> getAllSymbols() {
         return alphaVantageService.getAllSymbols();
     }
+    @GetMapping("/symbol")
+    public String getAllSymbol() {
+        return alphaVantageService.getAllSymbol();
+    }
 }

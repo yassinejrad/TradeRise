@@ -28,6 +28,8 @@ import {ConsultantLayoutModule} from "./views/ConsultantLayout/ConsultantLayout.
 import { RiskManagementComponent } from './views/pages/risk-management/risk-management.component';
 import {NgChartsModule} from "ng2-charts";
 import { StockOverviewComponent } from './views/pages/stock-overview/stock-overview.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import { CanvasJSAngularStockChartsModule } from '@canvasjs/angular-stockcharts';
 
 
 @NgModule({
@@ -55,7 +57,9 @@ import { StockOverviewComponent } from './views/pages/stock-overview/stock-overv
         NgxPaginationModule,
         FeatherIconModule,
         FormsModule,
-        NgChartsModule
+        NgApexchartsModule,
+        NgChartsModule,
+      CanvasJSAngularStockChartsModule
     ],
   providers: [
     AuthGuard,

@@ -172,6 +172,23 @@ public class RiskManagementService implements IRiskManagementService{
         return sum / returns.size();
     }
 
+    public double calculateHistoricalVaR(String symbol) {
+        double confidenceLevel = 0.95;
+        // Step 1: Retrieve Historical Data from Alpha Vantage
+        String historicalData = alphaVantageService.getDailyTimeSeriesData(symbol);
+
+        // Step 2: Calculate Daily Returns
+        List<Double> dailyReturns = calculateDailyReturns(historicalData);
+
+        // Step 3: Sort Returns
+        Collections.sort(dailyReturns);
+
+        // Step 4: Calculate VaR
+        int index = (int) Math.ceil((1 - confidenceLevel) * dailyReturns.size());
+        return dailyReturns.get(index - 1);
+    }
+
+
 }
 
 

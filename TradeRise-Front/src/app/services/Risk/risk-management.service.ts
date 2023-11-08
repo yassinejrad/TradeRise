@@ -15,4 +15,10 @@ export class RiskManagementService {
     const url = `${this.apiUrl}?symbol=${symbol}&interval=${interval}&numberOfSimulations=${numberOfSimulations}`;
     return this.http.get<number[]>(url);
   }
+  calculateVolatility(symbol: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/volatility/${symbol}`);
+  }
+  calculateVaR(symbol: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/var/${symbol}`);
+  }
 }

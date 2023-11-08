@@ -28,4 +28,8 @@ public class RiskManagementController {
     public double calculateVolatility(@PathVariable String symbol) {
         return riskManagementService.calculateVolatility(symbol);
     }
+    @GetMapping("/var/{symbol}")
+    public double calculateVaR(@PathVariable String symbol) {
+        return riskManagementService.calculateHistoricalVaR(symbol);
+    }
 }

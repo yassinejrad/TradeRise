@@ -11,7 +11,6 @@ export class RiskManagementComponent implements OnInit {
   symbol: string = 'AAPL';  // Default value for symbol
   interval: string = '15min';  // Default value for interval
   numberOfSimulations: number = 100;
-  simulatedPrices: number[] = [];
   lineChartData: any[] = [];
   lineChartLabels: string[] = [];
   lineChartOptions: any = {

@@ -38,8 +38,14 @@ public class AlphaVantageService {
     }
 
 
+    public String getAllSymbol() {
+        String url = "https://www.alphavantage.co/query?function=MARKET_STATUS&apikey=" + apiKey;
+
+       return restTemplate.getForObject(url, String.class);
+
+    }
     public List<String> getAllSymbols() {
-        String url = "https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=" + apiKey;
+        String url = "https://www.alphavantage.co/query?function=MARKET_STATUS&apikey=" + apiKey;
 
         String response = restTemplate.getForObject(url, String.class);
 
