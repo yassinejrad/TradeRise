@@ -27,6 +27,7 @@ import { RoleComponent } from './views/pages/role/role.component';
 import {ConsultantLayoutModule} from "./views/ConsultantLayout/ConsultantLayout.module";
 import { RiskManagementComponent } from './views/pages/risk-management/risk-management.component';
 import {NgChartsModule} from "ng2-charts";
+import { StockOverviewComponent } from './views/pages/stock-overview/stock-overview.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {NgChartsModule} from "ng2-charts";
     UserComponent,
     RoleComponent,
     RiskManagementComponent,
+    StockOverviewComponent,
 
   ],
     imports: [

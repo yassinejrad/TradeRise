@@ -20,6 +20,10 @@ public class AlphaVantageController {
     ) {
         return alphaVantageService.getHistoricalData(symbol, interval);
     }
+    @GetMapping("/getDailyTimeSeriesData/{symbol}")
+    public String getDailyTimeSeriesData(@PathVariable String symbol) {
+        return alphaVantageService.getDailyTimeSeriesData(symbol);
+    }
     @GetMapping("/symbols")
     public List<String> getAllSymbols() {
         return alphaVantageService.getAllSymbols();

@@ -15,6 +15,7 @@ import {UserComponent} from "./views/pages/user/user.component";
 import {RoleComponent} from "./views/pages/role/role.component";
 import {ConsultantBaseComponent} from "./views/ConsultantLayout/consultant-base/consultant-base.component";
 import {RiskManagementComponent} from "./views/pages/risk-management/risk-management.component";
+import {StockOverviewComponent} from "./views/pages/stock-overview/stock-overview.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,9 @@ const routes: Routes = [
       },
       {
         path: 'riskManagement', component:RiskManagementComponent,canActivate: [AuthGuard],data:{roles:['User']}
+      },
+      {
+        path: 'stockOverview', component:StockOverviewComponent,canActivate: [AuthGuard],data:{roles:['User']}
       },
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
       //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }

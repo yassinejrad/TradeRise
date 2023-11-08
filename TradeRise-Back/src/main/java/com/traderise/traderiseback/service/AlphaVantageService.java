@@ -29,6 +29,14 @@ public class AlphaVantageService {
                 + "&apikey=" + apiKey;
         return restTemplate.getForObject(url, String.class);
     }
+    public String getDailyTimeSeriesData(String symbol) {
+        String url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
+                + "&symbol=" + symbol
+                + "&apikey=" + apiKey;
+
+        return restTemplate.getForObject(url, String.class);
+    }
+
 
     public List<String> getAllSymbols() {
         String url = "https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=" + apiKey;

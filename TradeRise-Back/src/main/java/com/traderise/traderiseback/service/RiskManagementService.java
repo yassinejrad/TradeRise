@@ -104,6 +104,74 @@ public class RiskManagementService implements IRiskManagementService{
 
         return historicalPrices;
     }
+    public double calculateVolatility(String symbol) {
+        // Step 1: Retrieve Historical Data from Alpha Vantage
+        String historicalData = alphaVantageService.getDailyTimeSeriesData(symbol);
+
+        // Step 2: Calculate Daily Returns
+        List<Double> dailyReturns = calculateDailyReturns(historicalData);
+
+        // Step 3: Calculate Standard Deviation
+
+        return calculateStandardDeviation(dailyReturns);
+    }
+
+    private List<Double> calculateDailyReturns(String historicalData) {
+        List<Double> dailyReturns = new ArrayList<>();
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(historicalData);
+
+            JsonNode timeSeriesNode = rootNode.get("Time Series (Daily)");
+
+            if (timeSeriesNode != null) {
+                Iterator<Map.Entry<String, JsonNode>> iterator = timeSeriesNode.fields();
+
+                String prevDate = null;
+                double prevClose = 0.0;
+
+                while (iterator.hasNext()) {
+                    Map.Entry<String, JsonNode> entry = iterator.next();
+                    String date = entry.getKey();
+                    double close = entry.getValue().get("4. close").asDouble();
+
+                    if (prevDate != null) {
+                        double dailyReturn = (close - prevClose) / prevClose;
+                        dailyReturns.add(dailyReturn);
+                    }
+
+                    prevDate = date;
+                    prevClose = close;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return dailyReturns;
+    }
+
+    private double calculateStandardDeviation(List<Double> returns) {
+        double sum = 0.0;
+        double mean = calculateMean(returns);
+
+        for (double r : returns) {
+            sum += Math.pow(r - mean, 2);
+        }
+
+        double variance = sum / (returns.size() - 1);
+        return Math.sqrt(variance);
+    }
+
+    private double calculateMean(List<Double> returns) {
+        double sum = 0.0;
+        for (double r : returns) {
+            sum += r;
+        }
+        return sum / returns.size();
+    }
+
 }
 
 
