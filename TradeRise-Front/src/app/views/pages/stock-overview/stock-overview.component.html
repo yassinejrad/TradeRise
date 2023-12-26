@@ -7,7 +7,7 @@
             <label class="form-label" for="symbol">Symbol:</label>
             <input class="form-control" type="text" id="symbol" [(ngModel)]="symbol">
             <br>
-            <button class="btn btn-primary me-2" (click)="candleStickChart()">Get CandleStick Chart</button>
+            <button class="btn btn-primary me-2" (click)="clickPress()">Get CandleStick Chart</button>
           </div>
         </div>
       </div>
@@ -73,6 +73,28 @@
     </div>
   </div>
 </div> <!-- row -->
+<div #candlestickChart style="height: 600px; width: 100%;"></div>
+<br>
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">{{symbol}} News </h6>
+        <div *ngFor="let item of newsData ; let i = index" >
+        <ul class="list-unstyled">
 
+            <br>
+            <li class="d-flex align-items-start"  *ngIf="i<6">
+              <img src="{{item.bannerImage}}" class="wd-100 wd-sm-150 me-3" alt="...">
+              <div>
+                <h5 class="mt-0 mb-1">{{item.title}}</h5>
+                {{item.summary}}
+              </div>
+            </li>
+        </ul>
+        </div>
 
-<div #candlestickChart style="height: 300px; width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+</div>

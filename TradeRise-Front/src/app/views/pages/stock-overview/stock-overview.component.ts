@@ -15,6 +15,7 @@ export class StockOverviewComponent implements OnInit {
   symbol = 'IBM';
   volatlity=0;
   valueAR=0;
+  newsData: any[] = [];
   @ViewChild('candlestickChart') candlestickChartRef: ElementRef;
   constructor(private historicalDataService:HistoricalDataService,private riskManagementService:RiskManagementService) {  }
 
@@ -22,7 +23,56 @@ export class StockOverviewComponent implements OnInit {
     this.candleStickChart();
     this.calculateVolatility(this.symbol);
     this.calculateVaR(this.symbol);
+    this.getNews();
   }
+  clickPress(){
+    this.candleStickChart();
+    this.calculateVolatility(this.symbol);
+    this.calculateVaR(this.symbol);
+    this.getNews();
+  }
+  getNews() {
+    this.historicalDataService.getNewsSentimentForSymbol(this.symbol).subscribe(
+      data => {
+        console.log('Raw data:', data);
+        this.newsData = this.parseDataNews(data.feed);
+        console.log(this.newsData);
+      },
+      error => {
+        console.error('Error fetching news data:', error);
+      }
+    );
+  }
+
+  private parseDataNews(feed: any[]): any[] {
+    const parsedData = [];
+
+    for (const item of feed) {
+      const parsedItem = {
+        title: item.title,
+        summary: item.summary,
+        bannerImage: item.banner_image,
+        topics: item.topics.map((topic: any) => ({
+          topic: topic.topic,
+          relevanceScore: parseFloat(topic.relevance_score)
+        })),
+        overallSentiment: {
+          score: item.overall_sentiment_score,
+          label: item.overall_sentiment_label
+        },
+        tickerSentiment: item.ticker_sentiment.map((tickerSentiment: any) => ({
+          ticker: tickerSentiment.ticker,
+          relevanceScore: parseFloat(tickerSentiment.relevance_score),
+          sentimentScore: parseFloat(tickerSentiment.ticker_sentiment_score),
+          sentimentLabel: tickerSentiment.ticker_sentiment_label
+        }))
+      };
+      parsedData.push(parsedItem);
+    }
+
+    return parsedData;
+  }
+
   candleStickChart() {
     this.historicalDataService.getDailyTimeSeriesData(this.symbol).subscribe(data => {
       const chartData = this.parseData(data);
@@ -30,7 +80,7 @@ export class StockOverviewComponent implements OnInit {
 
       const options = {
         title: {
-          text: "Candlestick Chart"
+          text: "Candlestick and Column Chart"
         },
         axisX: {
           valueFormatString: "MMM YYYY",
@@ -40,20 +90,39 @@ export class StockOverviewComponent implements OnInit {
             valueFormatString: "MMM YYYY"
           }
         },
-        axisY: {
+        axisY: [{
           title: "Price",
           prefix: "$",
           crosshair: {
             enabled: true
           }
+        }, {
+          title: "Volume",
+          crosshair: {
+            enabled: true
+          },
+          reversed: true
+        }],
+        toolTip: {
+          shared: true
         },
         data: [{
           type: "candlestick",
+          showInLegend: true,
+          name: "Candlestick",
           dataPoints: chartData.map(entry => ({
             x: new Date(entry.date),
             y: [entry.open, entry.high, entry.low, entry.close]
           }))
-        }]
+        }, {
+          type: "column",
+          showInLegend: true,
+          name: "Volume",
+          dataPoints: chartData.map(entry => ({
+            x: new Date(entry.date),
+            y: entry.volume
+          }))
+        }],
       };
 
       const chart = new CanvasJS.Chart(canvas, options);

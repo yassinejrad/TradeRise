@@ -7,7 +7,8 @@ import {Observable} from "rxjs";
 })
 export class RiskManagementService {
 
-  private apiUrl = 'http://localhost:8089/riskManagement';
+  private apiUrl = 'http://localhost:8080/riskManagement';
+  private Url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -16,9 +17,9 @@ export class RiskManagementService {
     return this.http.get<number[]>(url);
   }
   calculateVolatility(symbol: string): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/volatility/${symbol}`);
+    return this.http.get<number>(`${this.Url}/volatility/${symbol}`);
   }
   calculateVaR(symbol: string): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/var/${symbol}`);
+    return this.http.get<number>(`${this.Url}/var/${symbol}`);
   }
 }

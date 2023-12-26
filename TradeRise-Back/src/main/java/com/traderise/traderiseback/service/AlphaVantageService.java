@@ -70,4 +70,16 @@ public class AlphaVantageService {
 
         return symbols;
     }
+    public String getNewsSentimentForSymbol(String symbol) {
+        String apiUrl = "https://www.alphavantage.co/query"
+                + "?function=NEWS_SENTIMENT"
+                + "&tickers=" + symbol
+                + "&topic=finance"
+                + "&limit=10"
+                + "&sort=LATEST"
+                + "&apikey=" + apiKey;
+
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(apiUrl, String.class);
+    }
 }

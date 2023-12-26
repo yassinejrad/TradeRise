@@ -64,14 +64,14 @@ public class RiskManagementService implements IRiskManagementService{
         System.out.println(historicalData);
 
         // Parse historical data and extract prices
-        double[] historicalPrices = parseHistoricalData(historicalData);
+        double[] historicalPrices = parseHistoricalData(historicalData,interval);
         // Run Monte Carlo simulation
         return runMonteCarloSimulation(historicalPrices, numberOfSimulations);
     }
 
     // Existing Monte Carlo methods...
 
-    private double[] parseHistoricalData(String historicalData) {
+    private double[] parseHistoricalData(String historicalData,String interval) {
         List<Double> prices = new ArrayList<>();
 
         try {
@@ -79,7 +79,7 @@ public class RiskManagementService implements IRiskManagementService{
             JsonNode rootNode = objectMapper.readTree(historicalData);
 
             // Assuming the data is in "Time Series (15min)" format
-            JsonNode timeSeriesNode = rootNode.get("Time Series (15min)");
+            JsonNode timeSeriesNode = rootNode.get("Time Series ("+interval+")");
 
             // Loop through the time series and extract prices
             if (timeSeriesNode != null) {
