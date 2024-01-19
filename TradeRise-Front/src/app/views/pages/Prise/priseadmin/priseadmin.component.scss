@@ -1,0 +1,46 @@
+.Reclamation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  
+    &-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  }
+  .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+    box-shadow: 50px 50px 50px 50px rgba(0, 123, 255, 1);
+  }
+  
+  .card:hover .hover-icons {
+    display: flex;
+  }
+  
+  .hover-icons {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ background-color: rgba(183, 181, 181, 1);
+  }
+  
+  .hover-icons i {
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
