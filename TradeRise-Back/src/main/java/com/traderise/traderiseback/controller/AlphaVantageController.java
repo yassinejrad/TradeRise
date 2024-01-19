@@ -32,4 +32,8 @@ public class AlphaVantageController {
     public String getAllSymbol() {
         return alphaVantageService.getAllSymbol();
     }
+    @GetMapping("/getNewsSentimentForSymbol/{symbol}")
+    public String getAllSymbol(@PathVariable String symbol) {
+        return alphaVantageService.getNewsSentimentForSymbol(symbol);
+    }
 }

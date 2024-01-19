@@ -8,6 +8,11 @@ import {Observable} from "rxjs";
 export class RiskManagementService {
 
   private apiUrl = 'http://localhost:8089/riskManagement';
+  private Url = 'http://localhost:8089';
+  private UrlMoving = 'http://localhost:8089';
+  private UrlEMoving = 'http://localhost:8089';
+  private UrlRSI = 'http://localhost:8089';
+  private UrlBB = 'http://localhost:8089';
 
   constructor(private http: HttpClient) { }
 
@@ -16,9 +21,25 @@ export class RiskManagementService {
     return this.http.get<number[]>(url);
   }
   calculateVolatility(symbol: string): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/volatility/${symbol}`);
+    return this.http.get<number>(`${this.Url}/volatility/${symbol}`);
   }
   calculateVaR(symbol: string): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/var/${symbol}`);
+    return this.http.get<number>(`${this.Url}/var/${symbol}`);
+  }
+  runMovingAverages(symbol: string, periode: number): Observable<any> {
+    const url = `${this.UrlMoving}/MovingAverages?symbol=${symbol}&periode=${periode}`;
+    return this.http.get<any>(url);
+  }
+  runExponentialMovingAverages(symbol: string, periode: number): Observable<any> {
+    const url = `${this.UrlEMoving}/ExponentialMovingAverages?symbol=${symbol}&periode=${periode}`;
+    return this.http.get<any>(url);
+  }
+  getRsiChartData(symbol: string): Observable<any> {
+    const url = `${this.UrlRSI}/getRsiChartData?symbol=${symbol}`;
+    return this.http.get<any>(url);
+  }
+  getBollingerBandsData(symbol: string, periode: number): Observable<any> {
+    const url = `${this.UrlBB}/getBollingerBandsData?symbol=${symbol}&periode=${periode}`;
+    return this.http.get<any>(url);
   }
 }

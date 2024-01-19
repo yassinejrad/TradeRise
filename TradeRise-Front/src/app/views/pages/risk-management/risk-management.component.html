@@ -1,14 +1,25 @@
 <div>
-  <label for="symbol">Symbol:</label>
-  <input type="text" id="symbol" [(ngModel)]="symbol">
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label" for="symbol">Symbol:</label>
+      <input class="form-control" type="text" id="symbol" [(ngModel)]="symbol">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label" for="interval">Interval:</label>
+      <input class="form-control" type="text" id="interval" [(ngModel)]="interval">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label" for="numberOfSimulations">Number of Simulations:</label>
+      <input class="form-control" type="number" id="numberOfSimulations" [(ngModel)]="numberOfSimulations">
+    </div>
+  </div>
 
-  <label for="interval">Interval:</label>
-  <input type="text" id="interval" [(ngModel)]="interval">
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="getRiskManagementData()">Get Risk Management Data</button>
+    </div>
+  </div>
 
-  <label for="numberOfSimulations">Number of Simulations:</label>
-  <input type="number" id="numberOfSimulations" [(ngModel)]="numberOfSimulations">
-
-  <button (click)="getRiskManagementData()">Get Risk Management Data</button>
 
   <div>
     <canvas baseChart
