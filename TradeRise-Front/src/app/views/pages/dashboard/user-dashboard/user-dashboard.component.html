@@ -1,1 +1,204 @@
-<p>user-dashboard works!</p>
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Stocks Market</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Market</li>
+    </ol>
+  </nav>
+  
+  <div class="row ">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">News</h4>
+          <div class="row ">
+            <div class="col-md-8 ">
+              <p class=“text-muted”><i data-feather="credit-card" appFeatherIcon></i> Vous Avez :</p>
+              <span>{{money}} DT</span>
+            </div>
+            <div class="col-md-4 " style="padding-left: 200px;">
+              <button type="button" class="btn btn-primary" (click)="gotoCard()">Alimenter votre compte</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row ">
+    <div class="col-xl-8 grid-margin stretch-card ">
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h6 class="card-title text-primary">Apple</h6>
+          <canvas id="areaChart" class="bg-dark"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 text-center">
+        <img src="../../../../../assets/images/62dec0259f18b71442a15966_Apple-Logo.png" alt="" class="img-fluid w-20 h-20"><br>
+        <p class="text-secondary">Apple est une entreprise multinationale américaine qui crée et commercialise des produits électroniques grand public, des ordinateurs personnels et des logiciels</p><br>
+        <button type="button" class="btn btn-secondary"(click)="gotoForm('AAPL')">Acheter</button>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-xl-8 grid-margin stretch-card ">
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h6 class="card-title text-primary">Tesla</h6>
+          <canvas id="areaChart2" class="bg-dark"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 text-center">
+        <img src="../../../../../assets/images/Tesla,_Inc.-Logomark-Black-Logo.wine.svg" alt="" class="img-fluid w-20 h-20"><br>
+        <p class="text-secondary">Tesla est un constructeur automobile de voitures électriques dont le siège social se situe à Austin, au Texas, sur le fleuve Colorado, aux États-Unis. </p><br>
+        <button type="button" class="btn btn-secondary" (click)="gotoForm('TSLA')">Acheter</button>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-xl-8 grid-margin stretch-card ">
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h6 class="card-title text-primary">Amazon </h6>
+          <canvas id="areaChart3" class="bg-dark"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 text-center">
+        <img src="../../../../../assets/images/logo-amazon-1-removebg-preview.png" alt="" class="img-fluid w-20 h-20"><br>
+        <p class="text-secondary">Amazon est une multinationale américaine basée à Seattle </p><br>
+        <button type="button" class="btn btn-secondary" (click)="gotoForm('AMZN')">Acheter</button>
+    </div>
+  </div>
+
+  <center><button type="button" class="btn btn-outline-warning" (click)="gotoOthers()">Voir plus</button></center>
+
+  <ng-template #others>
+    <div class="others-popup">
+      <div class="others-popup-content">
+        <div class="row">
+          <div class="col-xl-12 ">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title text-primary">Other Stocks</h6>
+              <a class="closedialog" (click)="close()" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+            </div>
+          </div><br>
+          <div class="col-xl-12 ">
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-outline-primary mr-2 mb-2" (click)="gotoStockss('TTMI')">TTM Technologies</button>
+              <button type="button" class="btn btn-outline-primary mr-2 mb-2"(click)="gotoStockss('OEC')">Orion SA</button>
+              <button type="button" class="btn btn-outline-primary mr-2 mb-2"(click)="gotoStockss('USDU')">WisdomTree Bloomberg</button>
+              <button type="button" class="btn btn-outline-primary mr-2 mb-2"(click)="gotoStockss('BWXT')">BWX Technologies</button>
+              <button type="button" class="btn btn-outline-primary mr-2 mb-2"(click)="gotoStockss('WRB')">W R Berkley Corp</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #Dialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+        </div>
+    </div>
+  </ng-template>
+<ng-template #stocks >
+  <div class="Reclamation-popup">
+      <div class="Reclamation-popup-content" >
+        <div class="row ">
+          <a class="closedialog" (click)="close()" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </a>
+          <div class="col-xl-12 grid-margin stretch-card ">
+            <div class="card bg-dark">
+              <div class="card-body">
+               
+                <canvas id="areaChart4" class="bg-dark"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="gotoForm(nameofstock)">Acheter</button>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #firstDialog >
+  <div class="Reclamation-popup">
+      <div class="Reclamation-popup-content" >
+        <div class="container mt-5">
+          <h2>Alimenter Votre Portfolio</h2>
+          <a class="closedialog" (click)="close()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </a>
+          <form [formGroup]="cardForm">
+            <div class="form-group">
+              <label for="cardNumber">Numéro de Carte :</label>
+              <input type="text" class="form-control" id="cardNumber" formControlName="num" placeholder="1234 5678 9101 1121" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="expirationDate">Date d'Expiration :</label>
+                <input type="text" class="form-control" id="expirationDate" formControlName="date" placeholder="MM/YY" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="cvv">Code Confidentiel (CVV) :</label>
+                <input type="text" class="form-control" id="cvv" formControlName="code" placeholder="123" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="amount">Montant (Dt)  :</label>
+              <input type="text" class="form-control" id="amount" formControlName="montant" placeholder="100.00" required>
+            </div><br>
+            <img src="../../../../../assets/images/Mastercard_logo-removebg-preview.png" alt="" style="width: 110px; height: 80px; margin-left: 70%;"> <br>
+            <button type="submit" class="btn btn-primary" (click)="onCard(Dialog)">Alimenter</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #formm >
+  <div class="Reclamation-popup">
+      <div class="Reclamation-popup-content" >
+        <h2>Acheter des stocks</h2>
+        <a class="closedialog" (click)="close()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </a>
+        <form [formGroup]="AcheterForm">
+          <div class="form-group">
+            <label for="namestock" class="form-label">Name of stock</label>
+            <input type="text" class="form-control" id="namestock"  formControlName="namestock" readonly>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="coast" class="form-label">coast</label>
+              <input type="text" class="form-control" id="coast"  formControlName="coast" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="number" class="form-label">Quantité</label>
+              <input type="number" class="form-control" id="number" formControlName="number">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="acheter(Dialog)">Acheter</button>
+        </form>
+      </div>
+  </div>
+</ng-template>

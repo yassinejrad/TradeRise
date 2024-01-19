@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="d-flex justify-content-center p-3 rounded-bottom">
+            <p class="mb-3" style="color: #b7b5b5;" *ngIf=" point!=='null'">Vous avez {{point}} <i class="mdi mdi-database"></i></p>
+            <p class="mb-3" style="color: #b7b5b5;" *ngIf=" point==='null'">Vous n'avez pas des points <i class="mdi mdi-database"></i></p>
+        </div>
+      </div>
+    </div>
+</div>
+<br>
+<h4 #cardGroup>Les Cadeaux</h4>
+      <p class="mb-3">les cadeaux pour les utilisateurs</p>
+      <ng-container *ngIf="Prises?.length===0 ||Prises===undefined; else CurrentPageItems">
+        <div class="example">
+            <span  style="padding-left: 350px; color:  #b7b5b5;">il n'y a pas des cadeaux pour le moment</span>
+        </div>
+    </ng-container>
+      <ng-template  #CurrentPageItems >
+        
+        <div class="example">
+            <div class="card-group">
+              <div class="card" *ngFor="let item of Prises let i = index">
+                <img style="width: 300px; height: 300px;" src="assets/images/{{item.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.titre}}</h5>
+                  <p class="card-text"><small class="text-muted">{{item.coust}}</small></p>
+                  <ng-container *ngIf="isUserPurchased(item)">
+                    <span class="badge bg-success">Acheté</span>
+                  </ng-container>
+                  <ng-container *ngIf="!isUserPurchased(item)">
+                    <div class="hover-icons">
+                        <a   (click)="acheter(Dialog,item.coust,item.idprise)"><i class="mdi mdi-assistant"></i> <span class="">Acheter</span></a>
+                      </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </ng-template>
+    <ng-template #Dialog >
+        <div class="Reclamation-popup">
+            <div class="Reclamation-popup-content" >
+                <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+                <div class="form-label">{{ secondsRemainingstring }}</div>
+            </div>
+        </div>
+    </ng-template>

@@ -24,4 +24,22 @@ export const MENU: MenuItem[] = [
     icon: 'user',
     link: 'Roles'
   },
+  {
+    label: 'Reclamation Management',
+    isTitle: true
+  },
+  {
+    label: 'Reclamation',
+    icon: 'frown',
+    link: 'Reclamtionadmin'
+  },
+  {
+    label: 'Prises',
+    isTitle: true
+  },
+  {
+    label: 'Prises',
+    icon: 'award',
+    link: 'priseadmin'
+  },
 ];

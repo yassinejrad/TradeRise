@@ -1,0 +1,129 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Reclamation</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Reclamation table</li>
+    </ol>
+  
+  </nav>
+  <div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Reclamation Table</h6>
+          <div class="table-responsive">
+            <table id="dataTableExample" class="table">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="Reclamtions?.length===0 ||Reclamtions===undefined; else CurrentPageItems">
+                    <tr>
+                        <td colspan="4" style="padding-left: 350px; color:  #b7b5b5;">Vous n'avez pas des Reclamation pour le moment</td>
+                    </tr>
+                </ng-container>
+                  <ng-template #CurrentPageItems>
+              <tr *ngFor="let item of Reclamtions let i = index">
+                <td>{{item.name}}  </td>
+                <td>{{item.message}}</td>
+                <td>
+                        <span *ngIf="item.status===false " style="color: red;">Not Fixed</span>
+                        <span *ngIf="item.status===true " style="color: green;">Fixed</span>
+                </td>
+                <td>
+                  <div ngbDropdown class="mb-2">
+                    <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" >
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="gotoModif(item)"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="ondelete(Dialog,item.idrec)"><i data-feather="delete" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+              </tbody>
+            </table>
+            <br>
+           
+          </div>
+          <br>
+          <center><button class="btn btn-secondary m-1 btn-sm" style="background-color: #007bff;"(click)="gotoAjout()" >Ajouter</button></center>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<ng-template #Dialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #firstDialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Ajouter Votre Reclamations </h2>
+            <a class="closedialog" (click)="close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+              <form  [formGroup]="ReclamtionForm">
+                <div class="row mb-3">
+                <label for="inputEmail3" class="form-label">Message</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputText" formControlName="message" name="message">
+                </div>
+                </div>
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary" (click) = onadd(Dialog)>Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #secondDialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Modifier Votre Reclamations </h2>
+            <a class="closedialog" (click)="close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+              <form [formGroup]="ReclamtionForm">
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="form-label">Message</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="message" formControlName="message" name="message">
+                    </div>
+                </div>
+                <div class="row mb-3" style="display: none;">
+                    <label for="inputEmail3" class="form-label">id</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="id" formControlName="id" name="id">
+                    </div>
+                </div>
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary" (click) = onmodif(Dialog)>Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="loader ">
+    <app-loader></app-loader>
+  </div>

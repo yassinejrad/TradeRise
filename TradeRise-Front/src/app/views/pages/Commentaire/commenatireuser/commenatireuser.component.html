@@ -1,0 +1,112 @@
+<nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink=".">Forum</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Les Commentaires</li>
+        </ol>
+      </nav>
+      
+      <div class="forum-container">
+        <ng-container *ngIf="Commenatires?.length===0 || Commenatires===undefined; else CurrentPageItems">
+          <div class="comment">
+            <p class="comment-text" style=" color: #b7b5b5;">Il n'y a pas des Commentaires pour le moment</p>
+          </div>
+        </ng-container>
+        
+        <ng-template #CurrentPageItems>
+          <div class="comment" *ngFor="let item of Commenatires let i = index">
+            <div class="comment-content">
+              <div class="user-info">
+                <span class="user-name">{{item.user.userFirstName}} {{item.user.userLastName}}</span>
+              </div>
+              <p class="comment-text">{{item.contenu}}</p>
+              <div class="card-footer">
+                <div class="d-flex post-actions">
+                    <a class="d-flex align-items-center text-muted me-4" (click)="toggleReplies(item)" *ngIf="item.reponses && item.reponses.length > 0">
+                        <i data-feather="arrow-right" appFeatherIcon></i>
+                        <p class="d-none d-md-block ms-2">Voir les commentaires ({{item.reponses.length}})</p>
+                    </a>
+                    <a class="d-flex align-items-center text-muted me-4" (click)="toggleReplyForm(i)" >
+                        <i class="feather icon-message-square icon-md"></i>
+                        <p class="d-none d-md-block ms-2">Répondre</p>
+                    </a>
+                    <a class="d-flex align-items-center text-muted me-4" (click)="deleteComment(item.idcommentaire)" *ngIf="parentmangment(i)" >
+                        <i data-feather="delete" appFeatherIcon></i>
+                        <p class="d-none d-md-block ms-2">Supprimer</p>
+                    </a>
+                    <a class="d-flex align-items-center text-muted me-4"  (click)="toggleUpdateparentForm(i)" *ngIf="parentmangment(i)">
+                        <i data-feather="edit-2" appFeatherIcon></i>
+                        <p class="d-none d-md-block ms-2">Modifier</p>
+                    </a>
+                </div>
+            </div>
+              <form class="search-form flex-grow-1 me-2" *ngIf="showReplyForm[i]" [formGroup]="CommenatireForm">
+                <div class="input-group">
+                    <input type="text" style="display: none;" class="form-control rounded-pill" id="idcommentaire" name="idcommentaire" formControlName="idcommentaire">
+                  <input type="text" class="form-control rounded-pill" id="chatForm" placeholder="Ajouter une réponse" formControlName="contenu" >
+                
+                  <button type="button" class="btn btn-primary btn-icon rounded-circle"  (click)="addReply()">
+                    <i class="feather icon-send"></i>
+                  </button>
+                </div>
+                <div style="color: red;">{{message1}}</div>
+            </form>
+            <form class="search-form flex-grow-1 me-2" *ngIf="showUpdateparentForm[i]" [formGroup]="CommenatireupdateParentForm">
+                <div class="input-group">
+                    <input type="text" style="display: none;" class="form-control rounded-pill" id="idcommentaire" name="idcommentaire" formControlName="idcommentaire">
+                  <input type="text" class="form-control rounded-pill" id="chatForm" placeholder="Ajouter une réponse" formControlName="contenu">
+                 
+                  <button type="button" class="btn btn-primary btn-icon rounded-circle"  (click)="updateComment()">
+                    <i class="feather icon-send"></i>
+                  </button>
+                </div>
+                <div style="color: red;">{{message2}}</div>
+            </form>
+              <!-- Replies section -->
+              <div class="replies" *ngIf="showReplies[i]">
+                <div class="comment reply" *ngFor="let reply of item.reponses let j = index">
+                  <div class="comment-content">
+                    <div class="user-info">
+                      <span class="user-name">{{reply.user.userFirstName}} {{reply.user.userLastName}}</span>
+                    </div>
+                    <p class="comment-text">{{reply.contenu}}</p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex post-actions">
+                        <a class="d-flex align-items-center text-muted me-4" (click)="deleteComment(reply.idcommentaire)" *ngIf="reponsemangment(i,j)">
+                            <i data-feather="delete" appFeatherIcon></i>
+                            <p class="d-none d-md-block ms-2">Supprimer</p>
+                        </a>
+                        <a class="d-flex align-items-center text-muted me-4" (click)="toggleResponseForm(j,i)" *ngIf="reponsemangment(i,j)">
+                            <i data-feather="edit-2" appFeatherIcon></i>
+                            <p class="d-none d-md-block ms-2">Modifier</p>
+                        </a>
+                    </div>
+                    <form class="search-form flex-grow-1 me-2" *ngIf="showUpdateResponseForm[j]" [formGroup]="CommenatireupdateReponseForm">
+                        <div class="input-group">
+                            <input type="text" style="display: none;" class="form-control rounded-pill" id="idcommentaire" name="idcommentaire" formControlName="idcommentaire">
+                          <input type="text" class="form-control rounded-pill" id="chatForm" placeholder="Ajouter une réponse" formControlName="contenu">
+                         
+                          <button type="button" class="btn btn-primary btn-icon rounded-circle"  (click)="updateComment2()">
+                            <i class="feather icon-send"></i>
+                          </button>
+                        </div>
+                        <div style="color: red;">{{message3}}</div>
+                    </form>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <form class="search-form flex-grow-1 me-2" [formGroup]="CommenatireajoutForm">
+            <div class="input-group">
+              <input type="text" class="form-control rounded-pill" id="chatForm" placeholder="Ajouter un Commentaire" formControlName="contenu">
+              <button type="button" class="btn btn-primary btn-icon rounded-circle"  (click)="addcomment()">
+                <i class="feather icon-send"></i>
+              </button>
+            </div>
+            <div style="color: red;">{{message4}}</div>
+        </form>
+      </div>
+      
+   

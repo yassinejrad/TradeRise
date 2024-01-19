@@ -14,9 +14,14 @@ import {ProfileComponent} from "./views/pages/general/profile/profile.component"
 import {UserComponent} from "./views/pages/user/user.component";
 import {RoleComponent} from "./views/pages/role/role.component";
 import {ConsultantBaseComponent} from "./views/ConsultantLayout/consultant-base/consultant-base.component";
-import {RiskManagementComponent} from "./views/pages/risk-management/risk-management.component";
-import {StockOverviewComponent} from "./views/pages/stock-overview/stock-overview.component";
-
+import { ReclamtionadminComponent } from './views/pages/Reclamation/reclamtionadmin/reclamtionadmin.component';
+import { ReclamtionuserComponent } from './views/pages/Reclamation/reclamtionuser/reclamtionuser.component';
+import { ConsultationConsultantComponent } from './views/pages/Consultation/consultation-consultant/consultation-consultant.component';
+import { ConsultationuserComponent } from './views/pages/Consultation/consultationuser/consultationuser.component';
+import { PriseadminComponent } from './views/pages/Prise/priseadmin/priseadmin.component';
+import { PriseuserComponent } from './views/pages/Prise/priseuser/priseuser.component';
+import { CommenatireuserComponent } from './views/pages/Commentaire/commenatireuser/commenatireuser.component';
+import { StockscomponnentComponent } from './views/pages/stocks/stockscomponnent/stockscomponnent.component';
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -30,13 +35,22 @@ const routes: Routes = [
         path: 'dashboard', component:UserDashboardComponent
       },
       {
+        path: 'Reclamtionuser', component:ReclamtionuserComponent
+      },
+      {
+        path: 'Consultationuser', component:ConsultationuserComponent
+      },
+      {
+        path: 'commentaire', component:CommenatireuserComponent
+      },
+      {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['User']}
       },
       {
-        path: 'riskManagement', component:RiskManagementComponent,canActivate: [AuthGuard],data:{roles:['User']}
+        path: 'priseuser', component:PriseuserComponent
       },
       {
-        path: 'stockOverview', component:StockOverviewComponent,canActivate: [AuthGuard],data:{roles:['User']}
+        path: 'stocksuser', component:StockscomponnentComponent
       },
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
       //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }
@@ -50,6 +64,9 @@ const routes: Routes = [
 
       {
         path: 'Dashboard', component:ConsultantDashboardComponent
+      },
+      {
+        path: 'Consultationconsultant', component:ConsultationConsultantComponent
       },
       {
         path: 'profile', component:ProfileComponent,canActivate: [AuthGuard],data:{roles:['Consultant']}
@@ -74,6 +91,12 @@ const routes: Routes = [
       },
       {
         path: 'Roles', component:RoleComponent,canActivate: [AuthGuard],data:{roles:['Admin']}
+      },
+      {
+        path: 'Reclamtionadmin', component:ReclamtionadminComponent
+      },
+      {
+        path: 'priseadmin', component:PriseadminComponent
       },
 
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },

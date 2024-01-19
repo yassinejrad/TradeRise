@@ -2,8 +2,11 @@ package com.traderise.traderiseback.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.*;
+
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -11,7 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Role {
+public class Role implements Serializable {
 
     @Id
     private String roleName;

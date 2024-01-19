@@ -30,4 +30,21 @@ export class UserAuthService {
     public isLoggedIn() {
       return this.getRoles() && this.getToken();
     }
+
+
+    public setname(name: string) {
+      localStorage.setItem('name', name);
+    }
+
+    public getname(): string {
+      return <string>localStorage.getItem('name');
+    }
+
+    public setpoint(point: any) {
+      localStorage.setItem('point', point);
+    }
+
+    public getpoint(): any {
+      return <string>localStorage.getItem('point');
+    }
 }

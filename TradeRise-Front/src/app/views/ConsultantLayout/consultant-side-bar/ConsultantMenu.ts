@@ -10,4 +10,13 @@ export const MENU: MenuItem[] = [
     icon: 'home',
     link: 'Dashboard'
   },
+  {
+    label: 'Consultation',
+    isTitle: true
+  },
+  {
+    label: 'Consultation',
+    icon: 'calendar',
+    link: 'Consultationconsultant'
+  },
 ];

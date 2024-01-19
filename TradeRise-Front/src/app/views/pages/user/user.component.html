@@ -18,6 +18,8 @@
               <th>Username</th>
               <th>firstName</th>
               <th>lastName</th>
+              <th>Email</th>
+              <th>Points</th>
               <th>Role</th>
               <th>Action</th>
             </tr>
@@ -35,6 +37,8 @@
               <td>{{item.userName}}</td>
               <td>{{item.userFirstName}}</td>
               <td>{{item.userLastName}}</td>
+              <td>{{item.email===null ? 'il n`a pas d`email':  item.email}}</td>
+              <td>{{item.points===null ? 'il n`a pas de points':  item.points}}</td>
               <td>
                 <div *ngFor="let role of item.role">
                   <select class="form-select mb-3-sm" name="roleName" [(ngModel)]="role.roleName " #roleName   ="ngModel" required>
@@ -52,6 +56,7 @@
                   <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
                     <a ngbDropdownItem class="d-flex align-items-center" [routerLink]="['/user/edit', item.idUser]" ><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
                     <a ngbDropdownItem class="d-flex align-items-center"  ><i data-feather="trash" appFeatherIcon class="icon-sm me-2" ></i> <span class="">Delete</span></a>
+                
                   </div>
                 </div>
               </td>
@@ -74,3 +79,35 @@
     </div>
   </div>
 </div>
+<ng-template #Dialog >
+  <div class="Reclamation-popup">
+      <div class="Reclamation-popup-content" >
+          <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #firstDialog >
+  <div class="Reclamation-popup">
+      <div class="Reclamation-popup-content" >
+          <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Ajouter des Points a l'utulisateur </h2>
+          <a class="closedialog" (click)="close()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </a>
+            <form  [formGroup]="pointsForm">
+              <div class="row mb-3">
+              <label for="inputEmail3" class="form-label">Points</label>
+              <div class="col-sm-10">
+                  <input type="number" class="form-control" id="points" formControlName="points" name="points">
+              </div>
+              </div>
+              <div class="text-center">
+              <button type="submit" class="btn btn-primary" (click) = onConfirmer(Dialog)>Confirmer</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</ng-template>
