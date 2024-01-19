@@ -1,5 +1,7 @@
 package com.traderise.traderiseback.controller;
 
+import com.traderise.traderiseback.entity.BollingerBandsData;
+import com.traderise.traderiseback.entity.MovingAverageData;
 import com.traderise.traderiseback.service.RiskManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,5 +33,28 @@ public class RiskManagementController {
     @GetMapping("/var/{symbol}")
     public double calculateVaR(@PathVariable String symbol) {
         return riskManagementService.calculateHistoricalVaR(symbol);
+    }
+    @GetMapping("/MovingAverages")
+    public List<MovingAverageData> runMovingAverages(
+            @RequestParam String symbol,
+            @RequestParam int periode) {
+        return riskManagementService.runCalculateMovingAverages(symbol, periode);
+    }
+    @GetMapping("/ExponentialMovingAverages")
+    public List<MovingAverageData> runExponentialMovingAverages(
+            @RequestParam String symbol,
+            @RequestParam int periode) {
+        return riskManagementService.runExponentialMovingAverages(symbol, periode);
+    }
+    @GetMapping("/getRsiChartData")
+    public List<MovingAverageData> getRsiChartData(
+            @RequestParam String symbol) {
+        return riskManagementService.getRsiChartData(symbol);
+    }
+    @GetMapping("/getBollingerBandsData")
+    public List<BollingerBandsData> getBollingerBandsData(
+            @RequestParam String symbol,
+            @RequestParam int periode) {
+        return riskManagementService.getBollingerBandsData(symbol, periode);
     }
 }
