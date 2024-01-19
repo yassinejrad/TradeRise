@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.headers.get('No-Auth') === 'True') {
+    if (req.headers.get('No-Auth') === 'True'|| this.isStocksService(req)) {
       return next.handle(req.clone());
     }
 
@@ -52,5 +52,8 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       }
     );
+  }
+  private isStocksService(req: HttpRequest<any>): boolean {
+    return req.url.includes('/aggs/ticker');
   }
 }

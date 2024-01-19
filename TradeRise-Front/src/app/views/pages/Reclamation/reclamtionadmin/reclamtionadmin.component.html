@@ -1,0 +1,59 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Reclamation</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Reclamation table</li>
+    </ol>
+  
+  </nav>
+  <div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Reclamation Table</h6>
+          <div class="table-responsive">
+            <table id="dataTableExample" class="table">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="Reclamtions?.length===0 ||Reclamtions===undefined; else CurrentPageItems">
+                    <tr>
+                        <td colspan="4" style="padding-left: 350px; color:  #b7b5b5;">Vous n'avez pas des Reclamation pour le moment</td>
+                    </tr>
+                </ng-container>
+                  <ng-template #CurrentPageItems>
+              <tr *ngFor="let item of Reclamtions let i = index">
+                <td>{{item.name}}  </td>
+                <td>{{item.message}}</td>
+                <td>{{item.status===false ? 'Not Fixed':  'Fixed' }}</td>
+                <td>
+                  <div ngbDropdown class="mb-2">
+                    <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" >
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                      <a ngbDropdownItem class="d-flex align-items-center" (click)="change(item.idrec)" ><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">{{item.status===false ? 'Solve it':  'working on it' }}</span></a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+              </tbody>
+            </table>
+            <br>
+           
+          </div>
+          <br>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loader ">
+    <app-loader></app-loader>
+  </div>

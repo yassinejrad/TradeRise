@@ -11,13 +11,47 @@ export const MENU: MenuItem[] = [
     link: '/dashboard'
   },
   {
-    label: 'Risk Management',
-    icon: 'home',
-    link: '/riskManagement'
+    label: 'Stocks',
+    isTitle: true
   },
   {
-    label: 'Stock Overview',
-    icon: 'home',
-    link: '/stockOverview'
+    label: 'Stocks',
+    icon: 'bar-chart-2',
+    link: '/stocksuser'
+  },
+  {
+    label: 'Reclamation',
+    isTitle: true
+  },
+  {
+    label: 'Reclamation',
+    icon: 'frown',
+    link: '/Reclamtionuser'
+  },{
+    label: 'consultation',
+    isTitle: true
+  },
+  {
+    label: 'consultation',
+    icon: 'calendar',
+    link: '/Consultationuser'
+  },
+  {
+    label: 'Prises',
+    isTitle: true
+  },
+  {
+    label: 'Prises',
+    icon: 'award',
+    link: '/priseuser'
+  },
+  {
+    label: 'Forum',
+    isTitle: true
+  },
+  {
+    label: 'Forum',
+    icon: 'navigation',
+    link: '/commentaire'
   },
 ];

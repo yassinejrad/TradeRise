@@ -1,0 +1,73 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink=".">Consultation</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Mes Rendez-vous</li>
+    </ol>
+  </nav>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Consultation</h6>
+          <div id="content">
+            <ng-container *ngIf="Consultations?.length === 0 || Consultations === undefined; else CurrentPageItems">
+                <ul class="timeline">
+                  <li class="event" data-date="">
+                    <h3 class="title">Consultation</h3>
+                    <p>Vous n'avez pas de consultation pour le moment</p>
+                  </li>
+                </ul>
+              </ng-container>
+              
+              <ng-template #CurrentPageItems>
+                <ul class="timeline" *ngFor="let item of Consultations; let i = index">
+                  <li class="event" [attr.data-date]="item.date | date:'yy-MM-dd'">
+                    <h3 class="title" *ngIf="item.status === false  &&  !isDateInFuture(item.date)">Expiré</h3>
+                    <h3 class="title" *ngIf="item.status === false  &&  isDateInFuture(item.date) && item.reponse===false">En attend</h3>
+                    <h3 class="title" *ngIf="item.status === false  &&  isDateInFuture(item.date) && item.reponse===true">Refusé</h3>
+                    <h3 class="title" *ngIf="item.status === true &&  !isDateInFuture(item.date)">Consultations passées</h3>
+                    <h3 class="title" *ngIf="item.status === true && isDateInFuture(item.date)">Bientôt</h3>
+                    <p>Consultation avec l'utulisateur {{ item.user.userName }}.</p>
+                    <a class="col-sm-6 col-md-4 col-lg-3" (click)="gotopopup(item.idcons)" *ngIf="item.status === false && isDateInFuture(item.date) && item.reponse===false"> <i data-feather="edit-3" appFeatherIcon></i> Consulter </a>
+                  </li>
+                </ul>
+              </ng-template>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+  </div>
+
+  <ng-template #Dialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="loader ">
+    <app-loader></app-loader>
+</div>
+
+<ng-template #firstDialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Voulez vous Accepter ou refuser la demande
+            <a class="closedialog" (click)="close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a></h2><br>
+                <button type="submit" class="btn btn-primary me-2" (click)="response(true,Dialog)">Accapter</button>
+                <button class="btn btn-secondary" (click)="response(false,Dialog)">Refuser</button>
+        </div>
+    </div>
+</ng-template>
+
+

@@ -1,0 +1,124 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">Prises</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Prises Cards</li>
+  </ol>
+
+</nav>
+<h4 #cardGroup>Les Cadeaux</h4>
+      <p class="mb-3">les cadeaux pour les utilisateurs</p>
+      <ng-container *ngIf="Prises?.length===0 ||Prises===undefined; else CurrentPageItems">
+        <div class="example">
+            <span  style="padding-left: 350px; color:  #b7b5b5;">Vous n'avez pas des cadeaux pour le moment</span>
+        </div>
+    </ng-container>
+      <ng-template  #CurrentPageItems >
+        
+        <div class="example">
+            <div class="card-group">
+              <div class="card" *ngFor="let item of Prises let i = index">
+                <div class="hover-icons">
+                  <a ngbDropdownItem class="d-flex align-items-center" (click)="gotoModif(item)"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                  <a ngbDropdownItem class="d-flex align-items-center" (click)="ondelete(Dialog,item.idprise)"><i data-feather="delete" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                </div>
+                <img style="width: 300px; height: 300px;" src="assets/images/{{item.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.titre}}</h5>
+                  <p class="card-text"><small class="text-muted">{{item.coust}}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </ng-template>
+    <br>
+    <center><button class="btn btn-secondary m-1 btn-sm" style="background-color: #007bff;"(click)="gotoAjout()" >Ajouter</button></center>
+
+    <ng-template #Dialog >
+      <div class="Reclamation-popup">
+          <div class="Reclamation-popup-content" >
+              <h2 matDialogTitle style="color: #007bff; font-size: 24px;">{{ message }} </h2>
+          </div>
+      </div>
+  </ng-template>
+  
+  <ng-template #firstDialog >
+      <div class="Reclamation-popup">
+          <div class="Reclamation-popup-content" >
+              <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Ajouter le Cadeaux </h2>
+              <a class="closedialog" (click)="close()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </a>
+                <form  [formGroup]="PriseForm">
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="form-label">Titre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="titre" formControlName="titre" name="titre">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="form-label">Coust</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="coust" formControlName="coust" name="coust">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="form-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="image"  name="image" (change)="onFileSelected($event)">
+                    </div>
+                  </div>
+                  <div class="text-center">
+                  <button type="submit" class="btn btn-primary" (click) = onadd(Dialog)>Confirmer</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </ng-template>
+
+
+  <ng-template #secondDialog >
+    <div class="Reclamation-popup">
+        <div class="Reclamation-popup-content" >
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Modifier </h2>
+            <a class="closedialog" (click)="close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+              <form  [formGroup]="PriseForm">
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="form-label">Titre</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="titre" formControlName="titre" name="titre">
+                  </div>
+                </div>
+                <div class="row mb-3" style="display: none;">
+                  <label for="inputEmail3" class="form-label">idprise</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="idprise" formControlName="idprise" name="idprise">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="form-label">Coust</label>
+                  <div class="col-sm-10">
+                      <input type="number" class="form-control" id="coust" formControlName="coust" name="coust">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="form-label">Image</label>
+                  <div class="col-sm-10">
+                      <input type="file" class="form-control" id="image" [value]="selectedFileName" name="image" (change)="onFileSelected($event)">
+                  </div>
+                </div>
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary" (click) = onmodif(Dialog)>Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

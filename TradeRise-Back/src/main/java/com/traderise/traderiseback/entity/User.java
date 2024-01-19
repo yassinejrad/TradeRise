@@ -1,6 +1,7 @@
 package com.traderise.traderiseback.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -13,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public class User {
+public class User implements Serializable {
 
     @Id
     private String userName;
@@ -22,6 +23,9 @@ public class User {
     private String userPassword;
     private String name;
     private String type;
+    private String email;
+    private Integer points;
+    private float money;
     @Column(name = "imagedata",length = 1000)
     private byte[] image;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
