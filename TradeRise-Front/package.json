@@ -23,6 +23,11 @@
     "@angular/platform-browser-dynamic": "^14.2.10",
     "@angular/router": "^14.2.10",
     "@canvasjs/angular-charts": "^1.0.3",
+
+    "@canvasjs/angular-stockcharts": "^1.0.3",
+    "@canvasjs/charts": "^3.7.26",
+    "@canvasjs/stockcharts": "^1.7.26",
+
     "@fullcalendar/angular": "^5.11.3",
     "@fullcalendar/core": "^5.11.3",
     "@fullcalendar/daygrid": "^5.11.3",
