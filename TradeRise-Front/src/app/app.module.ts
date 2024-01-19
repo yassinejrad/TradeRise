@@ -34,8 +34,10 @@ import { PriseadminComponent } from './views/pages/Prise/priseadmin/priseadmin.c
 import { PriseuserComponent } from './views/pages/Prise/priseuser/priseuser.component';
 import {UserDashboardComponent} from "./views/pages/dashboard/user-dashboard/user-dashboard.component";
 import { CommenatireuserComponent } from './views/pages/Commentaire/commenatireuser/commenatireuser.component';
-import { NgChartsModule } from 'ng2-charts';
 
+import { RiskManagementComponent } from './views/pages/risk-management/risk-management.component';
+import {NgChartsModule} from "ng2-charts";
+import { StockOverviewComponent } from './views/pages/stock-overview/stock-overview.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { StockscomponnentComponent } from './views/pages/stocks/stockscomponnent/stockscomponnent.component';
 
@@ -58,6 +60,8 @@ import { StockscomponnentComponent } from './views/pages/stocks/stockscomponnent
     PriseuserComponent,
     CommenatireuserComponent,
     StockscomponnentComponent,
+    RiskManagementComponent,
+    StockOverviewComponent,
 
   ],schemas: [ NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
   imports: [

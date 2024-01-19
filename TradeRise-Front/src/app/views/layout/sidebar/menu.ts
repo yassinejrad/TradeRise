@@ -20,6 +20,16 @@ export const MENU: MenuItem[] = [
     link: '/stocksuser'
   },
   {
+    label: 'Risk Management',
+    icon: 'home',
+    link: '/riskManagement'
+  },
+  {
+    label: 'Stock Overview',
+    icon: 'home',
+    link: '/stockOverview'
+  },
+  {
     label: 'Reclamation',
     isTitle: true
   },
@@ -54,4 +64,5 @@ export const MENU: MenuItem[] = [
     icon: 'navigation',
     link: '/commentaire'
   },
+
 ];

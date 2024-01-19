@@ -22,6 +22,8 @@ import { PriseadminComponent } from './views/pages/Prise/priseadmin/priseadmin.c
 import { PriseuserComponent } from './views/pages/Prise/priseuser/priseuser.component';
 import { CommenatireuserComponent } from './views/pages/Commentaire/commenatireuser/commenatireuser.component';
 import { StockscomponnentComponent } from './views/pages/stocks/stockscomponnent/stockscomponnent.component';
+import {StockOverviewComponent} from "./views/pages/stock-overview/stock-overview.component";
+import {RiskManagementComponent} from "./views/pages/risk-management/risk-management.component";
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -51,6 +53,12 @@ const routes: Routes = [
       },
       {
         path: 'stocksuser', component:StockscomponnentComponent
+      },
+      {
+        path: 'riskManagement', component:RiskManagementComponent,canActivate: [AuthGuard],data:{roles:['User']}
+      },
+      {
+        path: 'stockOverview', component:StockOverviewComponent,canActivate: [AuthGuard],data:{roles:['User']}
       },
       //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' ,canActivate: [AuthGuard],data:{roles:['User']}},
       //{ path: '**', redirectTo: 'dashboard', pathMatch: 'full',canActivate: [AuthGuard],data:{roles:['User']} }
