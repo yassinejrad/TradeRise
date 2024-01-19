@@ -13,6 +13,11 @@ export const MENU: MenuItem[] = [
   {
     label: 'Risk Management',
     icon: 'home',
+    link: '/riskManagement'
   },
-
+  {
+    label: 'Stock Overview',
+    icon: 'home',
+    link: '/stockOverview'
+  },
 ];

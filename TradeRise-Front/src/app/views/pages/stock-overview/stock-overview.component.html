@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-12 col-xl-12 stretch-card">
+    <div class="row flex-grow-1">
+      <div class="col-md grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <label class="form-label" for="symbol">Symbol:</label>
+            <input class="form-control" type="text" id="symbol" [(ngModel)]="symbol">
+            <br>
+            <button class="btn btn-primary me-2" (click)="clickPress()">Get CandleStick Chart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- row -->
+
+<div class="row">
+  <div class="col-12 col-xl-12 stretch-card">
+    <div class="row flex-grow-1">
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Volatility</h6>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2">{{volatlity}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Value at Risk</h6>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2">{{valueAR}}</h3>
+                <div class="d-flex align-items-baseline">
+                  <p class="text-success">
+                    <span>Confidence Level 95%</span>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- row -->
+<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+  <input type="radio" [(ngModel)]="selectedChart" [value]="'candlestick'" class="btn-check" id="btncheck1" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck1">CandleStick - Volume</label>
+
+  <input type="radio" [(ngModel)]="selectedChart" [value]="'movingAverages'" (click)="MovingAveragesChart()" class="btn-check" id="btncheck2" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck2">SMA</label>
+
+  <input type="radio" [(ngModel)]="selectedChart" [value]="'exponentialMovingAverages'" (click)="ExponentialMovingAveragesChart()" class="btn-check" id="btncheck3" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck3">EMA</label>
+
+  <input type="radio" [(ngModel)]="selectedChart" [value]="'rsi'" class="btn-check" (click)="rsiChart()" id="btncheck4" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck4">RSI</label>
+
+  <input type="radio" [(ngModel)]="selectedChart" [value]="'BollingerBands'" class="btn-check" (click)="bollingerBandsChart()" id="btncheck5" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck5">Bollinger Bands</label>
+</div>
+<br>
+<div *ngIf="selectedChart === 'candlestick'">
+
+  <div #candlestickChart style="height: 600px; width: 100%;"></div>
+</div>
+
+<div *ngIf="selectedChart === 'movingAverages'">
+
+  <div #movingAveragesChart style="height: 600px; width: 100%;"></div>
+</div>
+<div *ngIf="selectedChart === 'exponentialMovingAverages'">
+
+  <div #exponentialMovingAveragesChart style="height: 600px; width: 100%;"></div>
+</div>
+<div *ngIf="selectedChart === 'rsi'">
+
+  <div #rsiChart style="height: 600px; width: 100%;"></div>
+</div>
+<div *ngIf="selectedChart === 'BollingerBands'">
+
+  <div #BollingerBands style="height: 600px; width: 100%;"></div>
+</div>
+
+
+<br>
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">{{symbol}} News </h6>
+        <div *ngFor="let item of newsData ; let i = index" >
+        <ul class="list-unstyled">
+
+            <br>
+            <li class="d-flex align-items-start"  *ngIf="i<6">
+              <img src="{{item.bannerImage}}" class="wd-100 wd-sm-150 me-3" alt="...">
+              <div>
+                <h5 class="mt-0 mb-1">{{item.title}}</h5>
+                {{item.summary}}
+              </div>
+            </li>
+        </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
