@@ -17,7 +17,7 @@ interface YourType {
   v: number;
   vw: number;
   // Add other properties as needed
-}
+}  
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
