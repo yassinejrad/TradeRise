@@ -6,7 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import {Chart ,ChartType} from 'chart.js';
 import {Stock} from "../../../../models/Stock";
-import 'chartjs-chart-financial'; 
+import 'chartjs-chart-financial';
 interface YourType {
   c: number; // replace with the actual type
   h: number;
@@ -65,19 +65,19 @@ export class UserDashboardComponent implements OnInit {
     const number = this.AcheterForm.get('number')?.value;
     const coast = this.AcheterForm.get('coast')?.value;
     if (!namestock || !number || !coast   ) {
-      this.message = 'Tous les champs sont nécessaires pour effectuer votre operations !';
+      this.message = 'Veuillez compléter tous les champs requis pour mener à bien votre opération';
     this.dialogRef.open(templateRef);
     setTimeout(() => {
       this.dialogRef.closeAll();
-    }, 4000); 
+    }, 4000);
     return;
   }
   if (this.money<(coast*number)  ) {
-    this.message = 'Desolé vous n`avez pas assez `argent esseyer d`alimenter votre profeuil';
+    this.message = 'Solde insuffisant';
   this.dialogRef.open(templateRef);
   setTimeout(() => {
     this.dialogRef.closeAll();
-  }, 4000); 
+  }, 4000);
   return;
 }
   const currentDate: Date = new Date();
@@ -88,12 +88,12 @@ export class UserDashboardComponent implements OnInit {
   this.Stock.date=currentDate;
   this.StocksService.acheter(this.Stock,this.userAuthService.getname()).subscribe((data) => {
     if(data){
-      this.message = "opération effectuée avec succès";
+      this.message = "Votre opération a été exécutée avec succès";
       this.dialogRef.open(templateRef);
       setTimeout(() => {
         this.dialogRef.closeAll();
         location.reload();
-      }, 4000); 
+      }, 4000);
       return;
     }
   },
@@ -126,7 +126,7 @@ export class UserDashboardComponent implements OnInit {
           });
         }
     this.dialogRef.open(this.formm);
-  
+
 }
   close(){
     this.dialogRef.closeAll();
@@ -146,7 +146,7 @@ export class UserDashboardComponent implements OnInit {
         this.data4 = dataa;
         this.nameofstock=this.data4.ticker;
         this.chartData4 = this.data4.results;
-        this.processChartData4(); 
+        this.processChartData4();
         const days =[this.currentDateMinusOneDay.getDay(),this.currentDateMinusOneDay.getDay()+1,this.currentDateMinusOneDay.getDay()+5,this.currentDate.getDay()]
        // Extraction des données
     const timestamps = days;
@@ -212,7 +212,7 @@ export class UserDashboardComponent implements OnInit {
         backgroundColor: 'black',  // Changer la couleur de fond du graphique
       },
     });
-   
+
       }
     });
   }
@@ -222,29 +222,29 @@ export class UserDashboardComponent implements OnInit {
     const code = this.cardForm.get('code')?.value;
     const montant = this.cardForm.get('montant')?.value;
     if (!num || !date || !code || !montant  ) {
-      this.message = 'Tous les champs sont nécessaires pour effectuer votre alimentation !';
+      this.message = 'Veuillez compléter tous les champs requis pour mener à bien votre opération';
     this.dialogRef.open(templateRef);
     setTimeout(() => {
       this.dialogRef.closeAll();
-    }, 4000); 
+    }, 4000);
     return;
   }
   if(isNaN(montant)){
-    this.message = 'le montant ne doit pas inclure des chaine de caracteres';
+    this.message = 'Le montant ne doit contenir que des chiffres';
     this.dialogRef.open(templateRef);
     setTimeout(() => {
       this.dialogRef.closeAll();
-    }, 4000); 
+    }, 4000);
     return;
   }
   this.StocksService.SaveMoney(this.userAuthService.getname(),montant).subscribe((data) => {
     if(data){
-      this.message = "opération effectuée avec succès";
+      this.message = "Votre opération a été exécutée avec succès";
       this.dialogRef.open(templateRef);
       setTimeout(() => {
         this.dialogRef.closeAll();
         location.reload();
-      }, 4000); 
+      }, 4000);
       return;
     }
   },
@@ -257,16 +257,16 @@ export class UserDashboardComponent implements OnInit {
     this.StocksService.getmoney(this.userAuthService.getname()).subscribe(any => {
       if(any){
         this.money=any.money;
-        
-    
-  
-    
+
+
+
+
     this.currentDateMinusOneDay = this.getCurrentDateMinusOneDay();
     this.StocksService.liste("AAPL", this.switch(this.currentDateMinusOneDay), this.switch(this.currentDate)).subscribe(dataa => {
       if (dataa) {
         this.data = dataa;
         this.chartData = this.data.results;
-        this.processChartData2(); 
+        this.processChartData2();
         const days =[this.currentDateMinusOneDay.getDay(),this.currentDateMinusOneDay.getDay()+1,this.currentDateMinusOneDay.getDay()+5,this.currentDate.getDay()]
        // Extraction des données
     const timestamps = days;
@@ -332,10 +332,10 @@ export class UserDashboardComponent implements OnInit {
         backgroundColor: 'black',  // Changer la couleur de fond du graphique
       },
     });
-   
+
       }
     });
-    
+
 
 
 
@@ -343,8 +343,8 @@ export class UserDashboardComponent implements OnInit {
       if (dataa) {
         this.data2 = dataa;
         this.chartData2= this.data2.results;
-        
-        this.processChartData(); 
+
+        this.processChartData();
         const days =[this.currentDateMinusOneDay.getDay(),this.currentDateMinusOneDay.getDay()+1,this.currentDateMinusOneDay.getDay()+5,this.currentDate.getDay()]
        // Extraction des données
     const timestamps = days;
@@ -410,7 +410,7 @@ export class UserDashboardComponent implements OnInit {
         backgroundColor: 'black',  // Changer la couleur de fond du graphique
       },
     });
-   
+
       }
     });
 
@@ -421,8 +421,8 @@ export class UserDashboardComponent implements OnInit {
       if (dataa) {
         this.data3 = dataa;
         this.chartData3= this.data3.results;
-        
-        this.processChartData3(); 
+
+        this.processChartData3();
         const days =[this.currentDateMinusOneDay.getDay(),this.currentDateMinusOneDay.getDay()+1,this.currentDateMinusOneDay.getDay()+5,this.currentDate.getDay()]
        // Extraction des données
     const timestamps = days;
@@ -488,7 +488,7 @@ export class UserDashboardComponent implements OnInit {
         backgroundColor: 'black',  // Changer la couleur de fond du graphique
       },
     });
-   
+
       }
     });
 
@@ -496,8 +496,8 @@ export class UserDashboardComponent implements OnInit {
   }
 });
   }
- 
-  
+
+
   getCurrentDateMinusOneDay(): Date {
     const today = this.currentDate;
     const yesterday = new Date(today);
@@ -509,7 +509,7 @@ export class UserDashboardComponent implements OnInit {
     return formattedDate;
   }
   processChartData(): void {
-    const data1  : YourType = 
+    const data1  : YourType =
           {
             c: 0,
             h: 0,
@@ -529,7 +529,7 @@ export class UserDashboardComponent implements OnInit {
         data1.v=((this.chartData2[0].v+this.chartData2[1].v)/2)
         data1.vw=((this.chartData2[0].vw+this.chartData2[1].vw)/2)
         this.chartData2.push(data1)
-        const data2  : YourType = 
+        const data2  : YourType =
         {
           c: 0,
           h: 0,
@@ -550,9 +550,9 @@ export class UserDashboardComponent implements OnInit {
       data2.vw=((this.chartData2[1].vw+this.chartData2[2].vw)/2)
       this.chartData2.push(data2)
   }
-  
+
   processChartData2(): void {
-    const data1  : YourType = 
+    const data1  : YourType =
           {
             c: 0,
             h: 0,
@@ -572,7 +572,7 @@ export class UserDashboardComponent implements OnInit {
         data1.v=((this.chartData[0].v+this.chartData[1].v)/2)
         data1.vw=((this.chartData[0].vw+this.chartData[1].vw)/2)
         this.chartData.push(data1)
-        const data2  : YourType = 
+        const data2  : YourType =
         {
           c: 0,
           h: 0,
@@ -596,7 +596,7 @@ export class UserDashboardComponent implements OnInit {
 
 
   processChartData3(): void {
-    const data1  : YourType = 
+    const data1  : YourType =
           {
             c: 0,
             h: 0,
@@ -616,7 +616,7 @@ export class UserDashboardComponent implements OnInit {
         data1.v=((this.chartData3[0].v+this.chartData3[1].v)/2)
         data1.vw=((this.chartData3[0].vw+this.chartData3[1].vw)/2)
         this.chartData3.push(data1)
-        const data2  : YourType = 
+        const data2  : YourType =
         {
           c: 0,
           h: 0,
@@ -639,7 +639,7 @@ export class UserDashboardComponent implements OnInit {
   }
 
   processChartData4(): void {
-    const data1  : YourType = 
+    const data1  : YourType =
           {
             c: 0,
             h: 0,
@@ -659,7 +659,7 @@ export class UserDashboardComponent implements OnInit {
         data1.v=((this.chartData4[0].v+this.chartData4[1].v)/2)
         data1.vw=((this.chartData4[0].vw+this.chartData4[1].vw)/2)
         this.chartData4.push(data1)
-        const data2  : YourType = 
+        const data2  : YourType =
         {
           c: 0,
           h: 0,
