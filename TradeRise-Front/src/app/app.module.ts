@@ -8,7 +8,7 @@ import { LayoutModule } from './views/layout/layout.module';
 import { AdminLayoutModule } from  './views/AdminLayout/AdminLayout.module';
 import {AuthGuard} from "./_auth/auth.guard";
 
-
+ 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
