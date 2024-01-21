@@ -4,10 +4,10 @@
       <div class="col-md grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <label class="form-label" for="symbol">Symbol:</label>
+            <label class="form-label" for="symbol">Symbole:</label>
             <input class="form-control" type="text" id="symbol" [(ngModel)]="symbol">
             <br>
-            <button class="btn btn-primary me-2" (click)="clickPress()">Get CandleStick Chart</button>
+            <button class="btn btn-primary me-2" (click)="clickPress()">Obtenir un graphique en chandelier (Candlestick)</button>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Volatility</h6>
+              <h6 class="card-title mb-0">Volatilité</h6>
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
@@ -36,14 +36,14 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Value at Risk</h6>
+              <h6 class="card-title mb-0">La Valeur à Risque (VaR)</h6>
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
                 <h3 class="mb-2">{{valueAR}}</h3>
                 <div class="d-flex align-items-baseline">
                   <p class="text-success">
-                    <span>Confidence Level 95%</span>
+                    <span>Niveau de confiance 95%</span>
                   </p>
                 </div>
               </div>
@@ -101,7 +101,7 @@
   <div class="col-md-12 stretch-card">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title">{{symbol}} News </h6>
+        <h6 class="card-title">{{symbol}} Actualités </h6>
         <div *ngFor="let item of newsData ; let i = index" >
         <ul class="list-unstyled">
 

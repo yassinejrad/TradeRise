@@ -1,7 +1,7 @@
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink=".">Reclamation</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Reclamation table</li>
+      <li class="breadcrumb-item active" aria-current="page">Table des réclamations</li>
     </ol>
   
   </nav>
@@ -9,14 +9,14 @@
     <div class="col-md-12 stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Reclamation Table</h6>
+          <h6 class="card-title">Table des réclamations</h6>
           <div class="table-responsive">
             <table id="dataTableExample" class="table">
               <thead>
               <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Message</th>
-                <th>Status</th>
+                <th>Statut</th>
                 <th>Action</th>
               </tr>
               </thead>
@@ -31,8 +31,8 @@
                 <td>{{item.name}}  </td>
                 <td>{{item.message}}</td>
                 <td>
-                        <span *ngIf="item.status===false " style="color: red;">Not Fixed</span>
-                        <span *ngIf="item.status===true " style="color: green;">Fixed</span>
+                        <span *ngIf="item.status===false " style="color: red;">Non résolu</span>
+                        <span *ngIf="item.status===true " style="color: green;">Résolu</span>
                 </td>
                 <td>
                   <div ngbDropdown class="mb-2">
@@ -40,8 +40,8 @@
                       <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="gotoModif(item)"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="ondelete(Dialog,item.idrec)"><i data-feather="delete" appFeatherIcon class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="gotoModif(item)"><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Modifier</span></a>
+                      <a ngbDropdownItem class="d-flex align-items-center"  (click)="ondelete(Dialog,item.idrec)"><i data-feather="delete" appFeatherIcon class="icon-sm me-2"></i> <span class="">Supprimer</span></a>
                     </div>
                   </div>
                 </td>
@@ -70,7 +70,7 @@
 <ng-template #firstDialog >
     <div class="Reclamation-popup">
         <div class="Reclamation-popup-content" >
-            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Ajouter Votre Reclamations </h2>
+            <h2 matDialogTitle style="color: #007bff; font-size: 24px;">Ajouter Votre Reclamation </h2>
             <a class="closedialog" (click)="close()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

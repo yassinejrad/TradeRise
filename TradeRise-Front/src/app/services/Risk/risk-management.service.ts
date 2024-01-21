@@ -7,12 +7,12 @@ import {Observable} from "rxjs";
 })
 export class RiskManagementService {
 
-  private apiUrl = 'http://localhost:8089/riskManagement';
-  private Url = 'http://localhost:8089';
-  private UrlMoving = 'http://localhost:8089';
-  private UrlEMoving = 'http://localhost:8089';
-  private UrlRSI = 'http://localhost:8089';
-  private UrlBB = 'http://localhost:8089';
+  private apiUrl = 'http://localhost:808/riskManagement';
+  private Url = 'http://localhost:808';
+  private UrlMoving = 'http://localhost:808';
+  private UrlEMoving = 'http://localhost:808';
+  private UrlRSI = 'http://localhost:808';
+  private UrlBB = 'http://localhost:808';
 
   constructor(private http: HttpClient) { }
 

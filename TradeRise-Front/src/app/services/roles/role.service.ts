@@ -6,7 +6,7 @@ import {Role} from "../../models/Role";
   providedIn: 'root'
 })
 export class RoleService {
-  readonly API_URL = 'http://localhost:8089';
+  readonly API_URL = 'http://localhost:808';
   constructor(private httpClient: HttpClient) { }
   getAllRoles() {
     return this.httpClient.get(this.API_URL+`/getAllRoles`)

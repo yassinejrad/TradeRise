@@ -1,7 +1,7 @@
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink=".">Reclamation</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Reclamation table</li>
+      <li class="breadcrumb-item active" aria-current="page">Table des réclamations</li>
     </ol>
   
   </nav>
@@ -9,14 +9,14 @@
     <div class="col-md-12 stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Reclamation Table</h6>
+          <h6 class="card-title">Table des réclamations</h6>
           <div class="table-responsive">
             <table id="dataTableExample" class="table">
               <thead>
               <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Message</th>
-                <th>Status</th>
+                <th>Statut</th>
                 <th>Action</th>
               </tr>
               </thead>
@@ -37,7 +37,7 @@
                       <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
-                      <a ngbDropdownItem class="d-flex align-items-center" (click)="change(item.idrec)" ><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">{{item.status===false ? 'Solve it':  'working on it' }}</span></a>
+                      <a ngbDropdownItem class="d-flex align-items-center" (click)="change(item.idrec)" ><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">{{item.status===false ? 'Résoudre':  'En cours de traitement' }}</span></a>
                     </div>
                   </div>
                 </td>

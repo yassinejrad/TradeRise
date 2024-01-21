@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TradeRise.iml" filepath="$PROJECT_DIR$/.idea/TradeRise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TradeRise-Back/TradeRise-Back.iml" filepath="$PROJECT_DIR$/TradeRise-Back/TradeRise-Back.iml" />
     </modules>
   </component>
 </project>

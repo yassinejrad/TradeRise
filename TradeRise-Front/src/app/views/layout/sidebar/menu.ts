@@ -6,26 +6,26 @@ export const MENU: MenuItem[] = [
     isTitle: true
   },
   {
-    label: 'Dashboard',
+    label: 'Tableau de bord',
     icon: 'home',
     link: '/dashboard'
   },
   {
-    label: 'Stocks',
+    label: 'Actions',
     isTitle: true
   },
   {
-    label: 'Stocks',
+    label: 'Actions',
     icon: 'bar-chart-2',
     link: '/stocksuser'
   },
   {
-    label: 'Risk Management',
+    label: 'Gestion des risques',
     icon: 'home',
     link: '/riskManagement'
   },
   {
-    label: 'Stock Overview',
+    label: 'Aperçu des actions',
     icon: 'home',
     link: '/stockOverview'
   },
@@ -38,11 +38,11 @@ export const MENU: MenuItem[] = [
     icon: 'frown',
     link: '/Reclamtionuser'
   },{
-    label: 'consultation',
+    label: 'Consultation',
     isTitle: true
   },
   {
-    label: 'consultation',
+    label: 'Consultation',
     icon: 'calendar',
     link: '/Consultationuser'
   },
@@ -63,6 +63,25 @@ export const MENU: MenuItem[] = [
     label: 'Forum',
     icon: 'navigation',
     link: '/commentaire'
+  },
+  {
+    label: 'Cours',
+    isTitle: true,
+  },
+  {
+    label: 'Cours',
+    icon: 'book',
+    link: '/cours',
+  },
+  {
+    label: 'Certif',
+    icon: 'plus',
+    link: '/certif',
+  },
+  {
+    label: 'Cours en ligne',
+    icon: 'calendar',
+    link: '/rendezvous',
   },
 
 ];

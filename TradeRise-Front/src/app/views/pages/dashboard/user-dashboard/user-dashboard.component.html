@@ -1,7 +1,7 @@
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink=".">Stocks Market</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Market</li>
+      <li class="breadcrumb-item"><a routerLink=".">Marché Boursier</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Marché</li>
     </ol>
   </nav>
   
@@ -9,14 +9,14 @@
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">News</h4>
+          <h4 class="card-title">Actualités</h4>
           <div class="row ">
             <div class="col-md-8 ">
               <p class=“text-muted”><i data-feather="credit-card" appFeatherIcon></i> Vous Avez :</p>
               <span>{{money}} DT</span>
             </div>
             <div class="col-md-4 " style="padding-left: 200px;">
-              <button type="button" class="btn btn-primary" (click)="gotoCard()">Alimenter votre compte</button>
+              <button type="button" class="btn btn-primary" (click)="gotoCard()">Alimentez votre compte</button>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
         <div class="row">
           <div class="col-xl-12 ">
             <div class="d-flex justify-content-between">
-              <h6 class="card-title text-primary">Other Stocks</h6>
+              <h6 class="card-title text-primary">Autres actions</h6>
               <a class="closedialog" (click)="close()" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -138,7 +138,7 @@
   <div class="Reclamation-popup">
       <div class="Reclamation-popup-content" >
         <div class="container mt-5">
-          <h2>Alimenter Votre Portfolio</h2>
+          <h2>Alimentez Votre Portfolio</h2>
           <a class="closedialog" (click)="close()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -184,12 +184,12 @@
         </a>
         <form [formGroup]="AcheterForm">
           <div class="form-group">
-            <label for="namestock" class="form-label">Name of stock</label>
+            <label for="namestock" class="form-label">Nom de l'action</label>
             <input type="text" class="form-control" id="namestock"  formControlName="namestock" readonly>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="coast" class="form-label">coast</label>
+              <label for="coast" class="form-label">Cout</label>
               <input type="text" class="form-control" id="coast"  formControlName="coast" readonly>
             </div>
             <div class="form-group col-md-6">

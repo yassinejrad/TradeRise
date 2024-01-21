@@ -9,7 +9,7 @@ import {User} from "../../models/User";
 })
 export class StocksService {
   readonly API_URL = 'https://api.polygon.io/v2/aggs/ticker';
-  readonly API_URL2 = 'http://localhost:8089';
+  readonly API_URL2 = 'http://localhost:808';
   constructor(private httpClient: HttpClient,private userAuthService: UserAuthService) { }
   
 liste(stocksTicker:string,date1:string,date2:string): Observable<any[]>{
