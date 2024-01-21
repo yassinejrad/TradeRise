@@ -1,0 +1,33 @@
+Bonjour,
+
+
+
+Je vais valider mon plan de travail avec ESPRIT, du coup je voulais vous monter ce que j'ai préparé:
+
+Description du projet : 
+
+Il s'agit d'une application Web dédiée aux clients de telnet. En faite cette application est liée au satellite qui collecte les données de l'agriculture des devices de ce dernier .
+
+Ça permet au client d'acheter une offre qui présente la durée, le nombre de device ou chacun d'eux a des données spécifiques telles que l'humidité, la température Ainsi que la consultation des devices de l'offre qu'il a achetée.
+
+dois je plus développer la description où c'est correct ? 
+
+
+
+Sinon j'ai déjà travaillé sur la partie back, actuellement l'utilisateur peut s'authentifier avec certains privilèges (authentification based role):
+
+J'ai exposé des APIs consommables qui permettent au :
+
+Admin : gérer toutes les données (Ajoute,Modifier,Supprimer et consulter) dans notre base de données (MySQL) : gestion user, gestion plans, gestion d'abonnement.
+
+Client : Acheter des plans qui entrainent une création d'un abonnement lié à ce client.
+
+A propos les fonctionnalités qu'est-ce que je dois rajouter ?
+
+
+
+Romdhanek mabrouk,
+
+Bien à vous,
+
+Ahmed Shil.

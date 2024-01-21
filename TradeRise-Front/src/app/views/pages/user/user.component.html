@@ -1,0 +1,76 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">User</a></li>
+    <li class="breadcrumb-item active" aria-current="page">User table</li>
+  </ol>
+
+</nav>
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">User Table</h6>
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let item of userList | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                let i = index">
+              <td>{{i + (page-1) * tableSize + 1}}  </td>
+              <td>{{item.userName}}</td>
+              <td>{{item.userFirstName}}</td>
+              <td>{{item.userLastName}}</td>
+              <td>
+                <div *ngFor="let role of item.role">
+                  <select class="form-select mb-3-sm" name="roleName" [(ngModel)]="role.roleName " #roleName   ="ngModel" required>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div ngbDropdown class="mb-2">
+                  <button ngbDropdownToggle class="btn p-0 no-dropdown-toggle-icon" type="button" >
+                    <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal" appFeatherIcon></i>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                    <a ngbDropdownItem class="d-flex align-items-center" [routerLink]="['/user/edit', item.idUser]" ><i data-feather="edit-2" appFeatherIcon class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                    <a ngbDropdownItem class="d-flex align-items-center"  ><i data-feather="trash" appFeatherIcon class="icon-sm me-2" ></i> <span class="">Delete</span></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="d-flex justify-content-center">
+            <pagination-controls class="pagination"
+                                 previousLabel="Prev"
+                                 nextLabel="Next"
+                                 (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+</div>

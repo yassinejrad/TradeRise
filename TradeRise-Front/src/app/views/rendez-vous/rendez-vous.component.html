@@ -1,0 +1,75 @@
+<full-calendar [options]="calendarOptions"></full-calendar>
+<ng-template #contentrendezvous let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Rendez-vous</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <!-- Use eventDetails to display event information -->
+        <p>Title: {{ selectedrdv.title }}</p>
+        <p>Start Date: {{ selectedrdv.datestart | date : "medium" }}</p>
+        <p>End Date: {{ selectedrdv.dateend | date : "medium" }}</p>
+        <p>Etat: {{ selectedrdv.etat }}</p>
+        <!-- Add other event details as needed -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" *ngIf="selectedrdv.etat === 'En attente'">
+    <div class="form-group position-relative has-icon-left mb-0">
+      <!-- Add your form controls here -->
+      <button
+        type="submit"
+        class="btn btn-outline-success"
+        (click)="acceptRendezVous()"
+        style="
+          display: inline-block;
+          padding: 0.35em 1.2em;
+          border: 0.1em solid #ffffff;
+          margin: 0 0.3em 0.3em 0;
+          border-radius: 0.12em;
+          box-sizing: border-box;
+          text-decoration: none;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
+          color: #ffffff;
+          text-align: center;
+          transition: all 0.2s;
+          margin-top: 5%;
+        "
+      >
+        Accepter
+      </button>
+      <button
+        type="submit"
+        class="btn btn-outline-success"
+        (click)="refuseRendezVous()"
+        style="
+          display: inline-block;
+          padding: 0.35em 1.2em;
+          border: 0.1em solid #ffffff;
+          margin: 0 0.3em 0.3em 0;
+          border-radius: 0.12em;
+          box-sizing: border-box;
+          text-decoration: none;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
+          color: #ffffff;
+          text-align: center;
+          transition: all 0.2s;
+          margin-top: 5%;
+        "
+      >
+        Refuser
+      </button>
+    </div>
+  </div>
+</ng-template>

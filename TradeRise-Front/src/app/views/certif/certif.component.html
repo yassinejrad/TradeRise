@@ -1,0 +1,94 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Utilisateur</th>
+      <th>Cours</th>
+      <th>Etat</th>
+      <th>Exam</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let certif of listcertif">
+      <td>{{ certif.title }}</td>
+      <td>{{ certif.user.userName }}</td>
+      <td>{{ certif.cours.title }}</td>
+      <td>{{ certif.etat }}</td>
+      <td>
+        <a
+          href="http://localhost:8080/upload/{{ certif.file }}"
+          target="_blank"
+        >
+          Download
+        </a>
+      </td>
+      <td>
+        <button class="buttonc" (click)="openModal(accordcertif, certif)">
+          Accorder
+        </button>
+        <button class="buttonc" (click)="openModal(refuscertif, certif)">
+          Refuser
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #accordcertif let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Certificat</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Est ce que vous êtes sûr d'accorder la certificat à cet utilisateur ?
+  </div>
+  <div class="modal-footer">
+    <div class="form-group position-relative has-icon-left mb-0">
+      <button
+        type="submit"
+        id="add-contact-item"
+        class="btn btn-primary"
+        (click)="accorder()"
+      >
+        <i class="la la-paper-plane-o d-lg-none"></i>
+        <span class="d-none d-lg-block">Envoyer</span>
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #refuscertif let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Certificat</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Est ce que vous êtes sûr de refuser la certificat à cet utilisateur ?
+  </div>
+  <div class="modal-footer">
+    <div class="form-group position-relative has-icon-left mb-0">
+      <button
+        type="submit"
+        id="add-contact-item"
+        class="btn btn-primary"
+        (click)="refuser()"
+      >
+        <i class="la la-paper-plane-o d-lg-none"></i>
+        <span class="d-none d-lg-block">Envoyer</span>
+      </button>
+    </div>
+  </div>
+</ng-template>

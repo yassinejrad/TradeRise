@@ -1,0 +1,748 @@
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-header row mb-1"></div>
+    <div class="content-body">
+      <!-- Basic example section start -->
+      <section id="basic-examples">
+        <div class="row">
+          <div class="col-12 mt-3 mb-1">
+            <h4 class="text-uppercase">Cours</h4>
+            <p>
+              Vous pouvez consulter le cours ou envoyer un message directement
+              au consultant.
+            </p>
+            <button
+              style="
+                display: inline-block;
+                padding: 0.35em 1.2em;
+                border: 0.1em solid #ffffff;
+                margin: 0 0.3em 0.3em 0;
+                border-radius: 0.12em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: #ffffff;
+                text-align: center;
+                transition: all 0.2s;
+                margin-top: 5%;
+              "
+              (click)="GetMyCours()"
+            >
+              <a target="_blank" style="color: #ffffff"> Mes cours </a>
+            </button>
+            <button
+              style="
+                display: inline-block;
+                padding: 0.35em 1.2em;
+                border: 0.1em solid #ffffff;
+                margin: 0 0.3em 0.3em 0;
+                border-radius: 0.12em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: #ffffff;
+                text-align: center;
+                transition: all 0.2s;
+                margin-top: 5%;
+              "
+              (click)="GetCours()"
+            >
+              <a target="_blank" style="color: #ffffff"> Cours </a>
+            </button>
+            <button
+              style="
+                display: inline-block;
+                padding: 0.35em 1.2em;
+                border: 0.1em solid #ffffff;
+                margin: 0 0.3em 0.3em 0;
+                border-radius: 0.12em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: #ffffff;
+                text-align: center;
+                transition: all 0.2s;
+                margin-top: 5%;
+              "
+              (click)="openModalone(modalconsultant)"
+            >
+              Commencer la conversation
+            </button>
+            <button
+              style="
+                display: inline-block;
+                padding: 0.35em 1.2em;
+                border: 0.1em solid #ffffff;
+                margin: 0 0.3em 0.3em 0;
+                border-radius: 0.12em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: #ffffff;
+                text-align: center;
+                transition: all 0.2s;
+                margin-top: 5%;
+              "
+              (click)="openModalone(contentajoutcours)"
+            >
+              Ajouter cours
+            </button>
+          </div>
+        </div>
+
+        <div class="row" matchHeight="card">
+          <div
+            class="col-xl-3 col-md-4 col-sm-8"
+            *ngFor="let cours of listcours"
+          >
+            <div
+              class="card"
+              style="border-radius: 8px; margin-top: 5%; text-align: center"
+            >
+              <div class="card-content">
+                <img
+                  height="50%"
+                  width="50 px"
+                  class="card-img-top img-fluid"
+                  [src]="'../../../assets/images/' + cours.type + '.png'"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">{{ cours.title }}</h4>
+                  <h4 class="card-title">{{ cours.user.userName }}</h4>
+                  <p class="card-text">
+                    {{ cours.description }}
+                  </p>
+                  <button
+                    style="
+                      display: inline-block;
+                      padding: 0.35em 1.2em;
+                      border: 0.1em solid #ffffff;
+                      margin: 0 0.3em 0.3em 0;
+                      border-radius: 0.12em;
+                      box-sizing: border-box;
+                      text-decoration: none;
+                      font-family: 'Roboto', sans-serif;
+                      font-weight: 300;
+                      color: #ffffff;
+                      text-align: center;
+                      transition: all 0.2s;
+                      margin-top: 5%;
+                    "
+                  >
+                    <a
+                      href="http://localhost:8080/upload/{{ cours.file }}"
+                      target="_blank"
+                      style="color: #ffffff"
+                    >
+                      Telecharger
+                    </a>
+                  </button>
+                  <button
+                    style="
+                      display: inline-block;
+                      padding: 0.35em 1.2em;
+                      border: 0.1em solid #ffffff;
+                      margin: 0 0.3em 0.3em 0;
+                      border-radius: 0.12em;
+                      box-sizing: border-box;
+                      text-decoration: none;
+                      font-family: 'Roboto', sans-serif;
+                      font-weight: 300;
+                      color: #ffffff;
+                      text-align: center;
+                      transition: all 0.2s;
+                      margin-top: 5%;
+                    "
+                    (click)="openModal(modal, cours)"
+                  >
+                    Commencer la conversation
+                  </button>
+                  <button
+                    style="
+                      display: inline-block;
+                      padding: 0.35em 1.2em;
+                      border: 0.1em solid #ffffff;
+                      margin: 0 0.3em 0.3em 0;
+                      border-radius: 0.12em;
+                      box-sizing: border-box;
+                      text-decoration: none;
+                      font-family: 'Roboto', sans-serif;
+                      font-weight: 300;
+                      color: #ffffff;
+                      text-align: center;
+                      transition: all 0.2s;
+                      margin-top: 5%;
+                    "
+                    (click)="openModalCertif(contentcertif, cours)"
+                  >
+                    Demande de certificat
+                  </button>
+                  <button
+                    style="
+                      display: inline-block;
+                      padding: 0.35em 1.2em;
+                      border: 0.1em solid #ffffff;
+                      margin: 0 0.3em 0.3em 0;
+                      border-radius: 0.12em;
+                      box-sizing: border-box;
+                      text-decoration: none;
+                      font-family: 'Roboto', sans-serif;
+                      font-weight: 300;
+                      color: #ffffff;
+                      text-align: center;
+                      transition: all 0.2s;
+                      margin-top: 5%;
+                    "
+                    (click)="openModalCertif(contentrendezvous, cours)"
+                  >
+                    Rendez-vous
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- // Basic example section end -->
+
+      <!-- Content types section start -->
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<ng-template #modalconsultant let-c="close" let-d="dismiss">
+  <div class="modal-lg">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel22">Chat</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group" *ngFor="let chat of chatList">
+            <button (click)="loadMyChatRoom(chat.id)" class="list-group-item">
+              {{ chat.userName }}
+            </button>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <section class="chat-window-wrapper">
+            <div class="chat-area" id="chat-area d-none">
+              <div class="chat-header">
+                <header
+                  class="d-flex justify-content-between align-items-center px-1 py-75"
+                >
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="chat-sidebar-toggle d-block d-lg-none mr-1"
+                      id="chat-sidebar"
+                    >
+                      <i
+                        class="ficon feather ft-align-justify font-large-1 cursor-pointer"
+                      ></i>
+                    </div>
+                    <div class="avatar chat-profile-toggle m-0 mr-1">
+                      <span class="avatar-status-busy"></span>
+                    </div>
+                    <h6 class="mb-0">{{ selecteduser.username }}</h6>
+                  </div>
+                </header>
+              </div>
+              <!-- chat card start -->
+              <div class="card chat-wrapper mb-0">
+                <div class="card-content">
+                  <div class="card-body chat-container" id="componentRef">
+                    <div class="chat-content" #content>
+                      <div
+                        s
+                        id="chatWindow"
+                        class="chat"
+                        [ngClass]="
+                          currentUserid === message.user.id
+                            ? 'chat-left'
+                            : 'chat-right'
+                        "
+                        *ngFor="let message of list"
+                      >
+                        <div class="chat-avatar">
+                          <a [routerLink]="" class="avatar m-0"> </a>
+                        </div>
+                        <div class="chat-body">
+                          <div class="chat-contain">
+                            <p
+                              class="chat-message"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              *ngIf="message.text"
+                            >
+                              {{ message.text }}
+                            </p>
+                            <p
+                              class="chat-message"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              *ngIf="message.file"
+                            >
+                              <a
+                                href="http://localhost:8080/upload/{{
+                                  message.file
+                                }}"
+                                target="_blank"
+                              >
+                                {{ message.file }}
+                              </a>
+                            </p>
+                            <span
+                              class="chat-time"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              title="{{ message.date | date }}"
+                            >
+                              {{ message.date | date : "HH:mm" }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card-footer chat-footer px-2 py-1 pb-0"
+                  *ngIf="this.conversation"
+                  style="position: absolute"
+                >
+                  <form class="d-flex align-items-center">
+                    <input
+                      type="text"
+                      class="form-control chat-message-send mx-1"
+                      [(ngModel)]="newMessage"
+                      name="newmessage"
+                      id="iconLeft4"
+                      enctype="multipart/form-data"
+                      placeholder="Ecrire votre message ici...."
+                      #box
+                      (keyup.enter)="onEnter(box.value)"
+                    />
+                    <div style="width: 300px" class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="importFile"
+                        (change)="selectFile($event)"
+                        #fileInput
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn btn-primary glow send d-lg-flex"
+                      (click)="sendMessage()"
+                    >
+                      <i class="ficon feather ft-play"></i>
+                      <span class="d-none d-lg-block mx-50">Envoyer</span>
+                    </button>
+                  </form>
+                </div>
+                <div
+                  class="card-footer chat-footer px-2 py-1 pb-0"
+                  *ngIf="this.conversation == null"
+                >
+                  <button
+                    type="submit"
+                    class="btn btn-primary glow send d-lg-flex"
+                    (click)="startconversation()"
+                  >
+                    <i class="ficon feather ft-play"></i>
+                    <span class="d-none d-lg-block mx-50"
+                      >Commencer la conversation</span
+                    >
+                  </button>
+                </div>
+              </div>
+              <!-- chat card ends -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #modal let-c="close" let-d="dismiss">
+  <div class="modal-lg">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel22">Chat</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-14">
+          <section class="chat-window-wrapper">
+            <div class="chat-area" id="chat-area d-none">
+              <div class="chat-header">
+                <header
+                  class="d-flex justify-content-between align-items-center px-1 py-75"
+                >
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="chat-sidebar-toggle d-block d-lg-none mr-1"
+                      id="chat-sidebar"
+                    >
+                      <i
+                        class="ficon feather ft-align-justify font-large-1 cursor-pointer"
+                      ></i>
+                    </div>
+                    <div class="avatar chat-profile-toggle m-0 mr-1">
+                      <span class="avatar-status-busy"></span>
+                    </div>
+                    <h6 class="mb-0">{{ selecteduser.username }}</h6>
+                  </div>
+                </header>
+              </div>
+              <!-- chat card start -->
+              <div class="card chat-wrapper mb-0">
+                <div class="card-content">
+                  <div class="card-body chat-container" id="componentRef">
+                    <div class="chat-content" #content>
+                      <div
+                        s
+                        id="chatWindow"
+                        class="chat"
+                        [ngClass]="
+                          currentUserid === message.user.id
+                            ? 'chat-left'
+                            : 'chat-right'
+                        "
+                        *ngFor="let message of list"
+                      >
+                        <div class="chat-avatar">
+                          <a [routerLink]="" class="avatar m-0"> </a>
+                        </div>
+                        <div class="chat-body">
+                          <div class="chat-contain">
+                            <p
+                              class="chat-message"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              *ngIf="message.text"
+                            >
+                              {{ message.text }}
+                            </p>
+                            <p
+                              class="chat-message"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              *ngIf="message.file"
+                            >
+                              <a
+                                href="http://localhost:8080/upload/{{
+                                  message.file
+                                }}"
+                                target="_blank"
+                              >
+                                {{ message.file }}
+                              </a>
+                            </p>
+                            <span
+                              class="chat-time"
+                              [ngClass]="{
+                                right: currentUserid == message.user.id,
+                                left: currentUserid !== message.user.id
+                              }"
+                              title="{{ message.date | date }}"
+                            >
+                              {{ message.date | date : "HH:mm" }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card-footer chat-footer px-2 py-1 pb-0"
+                  *ngIf="this.conversation"
+                  style="position: absolute"
+                >
+                  <form class="d-flex align-items-center">
+                    <input
+                      style="width: 363px"
+                      type="text"
+                      class="form-control chat-message-send mx-1"
+                      [(ngModel)]="newMessage"
+                      name="newmessage"
+                      id="iconLeft4"
+                      enctype="multipart/form-data"
+                      placeholder="Ecrire votre message ici...."
+                      #box
+                      (keyup.enter)="onEnter(box.value)"
+                    />
+                    <div style="width: 300px" class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="importFile"
+                        (change)="selectFile($event)"
+                        #fileInput
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn btn-primary glow send d-lg-flex"
+                      (click)="sendMessage()"
+                    >
+                      <i class="ficon feather ft-play"></i>
+                      <span class="d-none d-lg-block mx-50">Envoyer</span>
+                    </button>
+                  </form>
+                </div>
+                <div
+                  class="card-footer chat-footer px-2 py-1 pb-0"
+                  *ngIf="this.conversation == null"
+                >
+                  <button
+                    type="submit"
+                    class="btn btn-primary glow send d-lg-flex"
+                    (click)="startconversation()"
+                  >
+                    <i class="ficon feather ft-play"></i>
+                    <span class="d-none d-lg-block mx-50"
+                      >Commencer la conversation</span
+                    >
+                  </button>
+                </div>
+              </div>
+              <!-- chat card ends -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #contentcertif let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Demande de certificat</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="certifexist">
+    <p>Le certificat existe avec l'état : {{ certif.etat }}</p>
+    <a
+      *ngIf="certif.etat == 'accord'"
+      href="http://localhost:8080/upload/certif.jpg"
+      target="_blank"
+    >
+      Telecharger certificat
+    </a>
+  </div>
+  <div class="modal-body" *ngIf="!certifexist">
+    <p>Est ce que vous êtes sûr ?</p>
+    <div style="width: 300px" class="custom-file">
+      <input
+        type="file"
+        class="custom-file-input"
+        id="importFile"
+        (change)="selectFile($event)"
+        #fileInput
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div
+      class="form-group position-relative has-icon-left mb-0"
+      *ngIf="!certifexist"
+    >
+      <button
+        type="submit"
+        id="add-contact-item"
+        class="btn btn-primary"
+        (click)="demandecertif()"
+      >
+        <i class="la la-paper-plane-o d-lg-none"></i>
+        <span class="d-none d-lg-block">Demander</span>
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #contentajoutcours let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Ajout cours</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Titre : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="titre"
+            [(ngModel)]="cours.title"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Type : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="type"
+            [(ngModel)]="cours.type"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Description : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            [(ngModel)]="cours.description"
+          />
+        </div>
+        <div style="width: 300px" class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="importFile"
+            (change)="selectFile($event)"
+            #fileInput
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group position-relative has-icon-left mb-0">
+      <button
+        type="submit"
+        class="btn btn-outline-success"
+        (click)="AjoutCours()"
+        style="
+          display: inline-block;
+          padding: 0.35em 1.2em;
+          border: 0.1em solid #ffffff;
+          margin: 0 0.3em 0.3em 0;
+          border-radius: 0.12em;
+          box-sizing: border-box;
+          text-decoration: none;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
+          color: #ffffff;
+          text-align: center;
+          transition: all 0.2s;
+          margin-top: 5%;
+        "
+      >
+        Ajouter
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #contentrendezvous let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel22">Rendez-vous</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Start Date and Time: </label>
+          <input
+            class="form-control"
+            type="datetime-local"
+            name="datestart"
+            [(ngModel)]="rendezvous.datestart"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">End Date and Time: </label>
+          <input
+            class="form-control"
+            type="datetime-local"
+            name="dateend"
+            [(ngModel)]="rendezvous.dateend"
+          />
+        </div>
+        <!-- Warning message -->
+        <div *ngIf="showWarning" class="alert alert-warning" role="alert">
+          Selected time range is not available. Please choose a different time.
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group position-relative has-icon-left mb-0">
+      <button
+        type="submit"
+        class="btn btn-outline-success"
+        (click)="AjoutRendezVous()"
+        style="
+          display: inline-block;
+          padding: 0.35em 1.2em;
+          border: 0.1em solid #ffffff;
+          margin: 0 0.3em 0.3em 0;
+          border-radius: 0.12em;
+          box-sizing: border-box;
+          text-decoration: none;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
+          color: #ffffff;
+          text-align: center;
+          transition: all 0.2s;
+          margin-top: 5%;
+        "
+      >
+        Ajouter
+      </button>
+    </div>
+  </div>
+</ng-template>
